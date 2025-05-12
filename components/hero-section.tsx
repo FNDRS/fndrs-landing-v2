@@ -6,9 +6,13 @@ import { ArrowUpRight } from "lucide-react";
 import ServiceCarousel from "./services-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { heroText } from "@/constants/hero-section-translations";
 
 const HeroSection = () => {
   const router = useRouter();
+  const lang = "es";
+  const t = heroText[lang];
+
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-white to-white">
       <div
@@ -30,13 +34,11 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[85px] mb-6">
-              Building Your Future With Digital Solutions
+              {t.title}
             </h1>
             <p className="text- leading-loose text-gray-500 font-normal mb-8 max-w-lg">
               <strong className="font-bold">FNDRS </strong>
-              is a 360 consulting agency. The focus of our work is help clients
-              to found and build their future based on technology, mitigating
-              risk and drive efficiency through people, process and technology.
+              {t.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
@@ -45,7 +47,7 @@ const HeroSection = () => {
                 variant="outline"
                 onClick={() => router.push("#process")}
               >
-                Get Started
+                {t.getStarted}
                 <ArrowUpRight className="ml-2" size={16} />
               </Button>
               <Button
@@ -54,7 +56,7 @@ const HeroSection = () => {
                 className="font-medium hover:bg-gray-100 hover:text-gray-800"
                 onClick={() => router.push("#services")}
               >
-                View Our Services
+                {t.viewServices}
               </Button>
             </div>
           </motion.div>
@@ -76,6 +78,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}

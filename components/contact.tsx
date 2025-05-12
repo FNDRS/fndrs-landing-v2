@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { contactFormText } from "@/constants/contact-translations";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -32,6 +33,9 @@ const fadeIn = {
 };
 
 const ContactForm = () => {
+  const lang = "es";
+  const t = contactFormText[lang];
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -53,36 +57,14 @@ const ContactForm = () => {
     },
   });
 
-  const serviceOptions = [
-    { value: "mobile-app", label: "Mobile App" },
-    { value: "website-design", label: "Website Design" },
-    { value: "branding", label: "Branding" },
-    { value: "web-development", label: "Web Development" },
-    { value: "marketing", label: "Marketing Strategy" },
-  ];
-
-  const budgetOptions = [
-    { value: "1k-5k", label: "$1k - $5k" },
-    { value: "5k-10k", label: "$5k - $10k" },
-    { value: "10k-20k", label: "$10k - $20k" },
-    { value: "20k-50k", label: "$20k - $50k" },
-    { value: "50k+", label: ">$50k" },
-  ];
-
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
 
     try {
-      console.log("Form data:", data);
-
       await new Promise((resolve) => setTimeout(resolve, 1000));
-
       setIsSuccess(true);
       reset();
-
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 5000);
+      setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {
@@ -101,12 +83,9 @@ const ContactForm = () => {
       >
         <motion.div variants={fadeIn} custom={0} className="mb-10">
           <h1 className="text-4xl md:text-7xl text-center font-bold mb-4">
-            <span className="text-gray-400">Say Hi!</span> and tell us about
-            your idea
+            <span className="text-gray-400">{t.titleAccent}</span> {t.titleRest}
           </h1>
-          <p className="text-gray-600 text-center">
-            Have a nice works? Reach out and let&apos;s chat.
-          </p>
+          <p className="text-gray-600 text-center">{t.subtitle}</p>
         </motion.div>
 
         <motion.form
@@ -119,12 +98,12 @@ const ContactForm = () => {
         >
           <motion.div variants={fadeIn} custom={1}>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
-              Name*
+              {t.nameLabel}
             </label>
             <input
               id="name"
               type="text"
-              placeholder="Hello..."
+              placeholder={t.namePlaceholder}
               className={`w-full px-4 py-3 border-b ${
                 errors.name ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
@@ -137,12 +116,12 @@ const ContactForm = () => {
 
           <motion.div variants={fadeIn} custom={2}>
             <label htmlFor="email" className="block text-sm font-medium mb-2">
-              Email*
+              {t.emailLabel}
             </label>
             <input
               id="email"
               type="email"
-              placeholder="Where can we reply?"
+              placeholder={t.emailPlaceholder}
               className={`w-full px-4 py-3 border-b ${
                 errors.email ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
@@ -157,12 +136,12 @@ const ContactForm = () => {
 
           <motion.div variants={fadeIn} custom={3}>
             <label htmlFor="company" className="block text-sm font-medium mb-2">
-              Company Name
+              {t.companyLabel}
             </label>
             <input
               id="company"
               type="text"
-              placeholder="Your company or website?"
+              placeholder={t.companyPlaceholder}
               className="w-full px-4 py-3 border-b border-gray-300 focus:border-black outline-none transition-colors"
               {...register("company")}
             />
@@ -170,14 +149,14 @@ const ContactForm = () => {
 
           <motion.div variants={fadeIn} custom={4}>
             <label className="block text-sm font-medium mb-3">
-              What&apos;s in your mind?*
+              {t.servicesLabel}
             </label>
             <Controller
               control={control}
               name="services"
               render={({ field }) => (
                 <div className="flex flex-wrap gap-2">
-                  {serviceOptions.map((option) => (
+                  {t.serviceOptions.map((option) => (
                     <label
                       key={option.value}
                       className={`inline-flex items-center px-4 py-2 rounded-full border cursor-pointer transition-colors ${
@@ -214,14 +193,14 @@ const ContactForm = () => {
 
           <motion.div variants={fadeIn} custom={5}>
             <label className="block text-sm font-medium mb-3">
-              How much your budget range?*
+              {t.budgetLabel}
             </label>
             <Controller
               control={control}
               name="budget"
               render={({ field }) => (
                 <div className="flex flex-wrap gap-2">
-                  {budgetOptions.map((option) => (
+                  {t.budgetOptions.map((option) => (
                     <label
                       key={option.value}
                       className={`inline-flex items-center px-4 py-2 rounded-full border cursor-pointer transition-colors ${
@@ -252,11 +231,11 @@ const ContactForm = () => {
 
           <motion.div variants={fadeIn} custom={6}>
             <label htmlFor="message" className="block text-sm font-medium mb-2">
-              Message*
+              {t.messageLabel}
             </label>
             <textarea
               id="message"
-              placeholder="I want to build some..."
+              placeholder={t.messagePlaceholder}
               rows={4}
               className={`w-full px-4 py-3 border-b ${
                 errors.message ? "border-red-500" : "border-gray-300"
@@ -276,15 +255,11 @@ const ContactForm = () => {
               disabled={isSubmitting}
               className="px-8 py-3 bg-black text-white rounded-full flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors disabled:opacity-70"
             >
-              {isSubmitting ? "Submitting..." : "Submit"}
+              {isSubmitting ? t.submitting : t.submit}
               {!isSubmitting && <ArrowRight size={16} />}
             </button>
 
-            {isSuccess && (
-              <p className="mt-4 text-green-600">
-                Thank you for your message! We&apos;ll get back to you soon.
-              </p>
-            )}
+            {isSuccess && <p className="mt-4 text-green-600">{t.success}</p>}
           </motion.div>
         </motion.form>
       </motion.div>

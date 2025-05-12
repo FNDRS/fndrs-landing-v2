@@ -1,5 +1,6 @@
 "use client";
 
+import { aboutText } from "@/constants/about-translations";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -27,6 +28,9 @@ const AboutSection = () => {
     },
   };
 
+  const lang = "es";
+  const t = aboutText[lang];
+
   return (
     <section id="about" className="py-20" ref={ref}>
       <div className="container mx-auto px-4">
@@ -34,50 +38,36 @@ const AboutSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
           <motion.h2
             variants={itemVariants}
             className="md:text-5xl text-3xl font-normal text-center mb-4"
           >
-            FNDRS&apos;s Solutions Surpass Expectations
+            {t.title}
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
             className="text-gray-500 text-center mb-16 text-lg"
           >
-            We are your partner in crafting digital brilliance. Our expertise
-            spans across multiple domains to deliver exceptional results.
+            {t.description}
           </motion.p>
 
           <motion.div
             variants={containerVariants}
             className="grid grid-cols-1 md:grid-cols-3 gap-12"
           >
-            <motion.div variants={itemVariants} className="text-center">
-              <h3 className="text-2xl font-normal mb-4">Passionate Creators</h3>
-              <p className="text-gray-500">
-                We are a team of visionary creators, strategists, and
-                innovators. With a deep passion for design and technology.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="text-center">
-              <h3 className="text-2xl font-normal mb-4">Innovators</h3>
-              <p className="text-gray-500">
-                We constantly push the boundaries of what's possible, bringing
-                fresh ideas and innovative solutions to every project.
-              </p>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="text-center">
-              <h3 className="text-2xl font-normal mb-4">Visionaries</h3>
-              <p className="text-gray-500">
-                We don't just solve today's problems – we anticipate tomorrow's
-                challenges and prepare your business for the future.
-              </p>
-            </motion.div>
+            {t.cards.map((card, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="text-center"
+              >
+                <h3 className="text-2xl font-normal mb-4">{card.heading}</h3>
+                <p className="text-gray-500">{card.text}</p>
+              </motion.div>
+            ))}
           </motion.div>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Instagram, Linkedin } from "lucide-react";
+import { footerText } from "@/constants/footer";
 
 const Footer = () => {
   const fadeInUp = {
@@ -11,6 +12,9 @@ const Footer = () => {
     transition: { duration: 0.6 },
     viewport: { once: true },
   };
+
+  const lang = "es";
+  const t = footerText[lang];
 
   return (
     <footer id="footer" className="bg-black text-white overflow-hidden">
@@ -23,15 +27,12 @@ const Footer = () => {
             <motion.div {...fadeInUp}>
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-1 h-1 bg-white/80 rounded-full" />
-                <p className="text-xs text-white/70">
-                  Open for any collaboration
-                </p>
+                <p className="text-xs text-white/70">{t.collaborationNote}</p>
               </div>
             </motion.div>
             <motion.div {...fadeInUp}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 leading-normal">
-                Book a free consultation now to discover how we can help your
-                business to thrive!
+                {t.consultationTitle}
               </h2>
             </motion.div>
             <motion.div className="mt-8" {...fadeInUp}>
@@ -39,7 +40,7 @@ const Footer = () => {
                 href="/contact"
                 className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full hover:bg-zinc-900 transition-colors"
               >
-                <span>Get started today</span>
+                <span>{t.cta}</span>
                 <span className="flex items-center justify-center w-8 h-8 bg-white text-black rounded-full">
                   <ArrowRight size={16} />
                 </span>
@@ -52,9 +53,9 @@ const Footer = () => {
           >
             <div></div>
             <div>
-              <h3 className="text-zinc-400 mb-1">Email address</h3>
+              <h3 className="text-zinc-400 mb-1">{t.contactEmail}</h3>
               <a href="mailto:contact@fndrs.com" className="text-sm">
-                contact@fndrs.com
+                {t.contactLabel}
               </a>
             </div>
           </motion.div>
@@ -67,13 +68,9 @@ const Footer = () => {
       >
         <div className="container mx-auto grid md:grid-cols-2 gap-8">
           <motion.div className="lg:col-span-1 w-full" {...fadeInUp}>
-            <p className="text-lg mb-6 max-w-sm">
-              Ready to elevate your digital presence? Contact us to discuss how
-              FNDRS can turn your ideas into visually captivating realities that
-              drive results.
-            </p>
+            <p className="text-lg mb-6 max-w-sm">{t.introParagraph}</p>
             <div>
-              <h3 className="mb-4">Visit us on:</h3>
+              <h3 className="mb-4">{t.socialTitle}</h3>
               <div className="flex gap-2">
                 <Link
                   href="https://www.instagram.com/the.fndrs/"
@@ -105,77 +102,53 @@ const Footer = () => {
           <motion.div className="grid grid-cols-3 gap-8" {...fadeInUp}>
             <div>
               <h3 className="text-md text-zinc-500 font-medium mb-6">
-                Navigation
+                {t.navTitle}
               </h3>
               <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/#home"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Homepage
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#services"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#process"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Our Process
-                  </Link>
-                </li>
+                {t.navLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="hover:text-zinc-300 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h3 className="text-md font-medium mb-6 text-zinc-500">
-                Company
+                {t.companyTitle}
               </h3>
               <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/#about"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    About us
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/#team"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Career
-                  </Link>
-                </li>
+                {t.companyLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="hover:text-zinc-300 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
-              <h3 className="text-md font-medium mb-6 text-zinc-500">Legal</h3>
+              <h3 className="text-md font-medium mb-6 text-zinc-500">
+                {t.legalTitle}
+              </h3>
               <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Terms of service
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors text-sm"
-                  >
-                    Privacy policy
-                  </Link>
-                </li>
+                {t.legalLinks.map((link, index) => (
+                  <li key={index}>
+                    <Link
+                      href={link.href}
+                      className="hover:text-zinc-300 transition-colors text-sm"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </motion.div>
@@ -185,7 +158,7 @@ const Footer = () => {
       <motion.div className="p-6" {...fadeInUp}>
         <div className="container mx-auto">
           <p className="text-center text-sm text-zinc-500">
-            Copyright © {new Date().getFullYear()} FNDRS. All Rights Reserved.
+            {t.copyright(new Date().getFullYear())}
           </p>
         </div>
       </motion.div>
