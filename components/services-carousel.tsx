@@ -24,7 +24,6 @@ const ServiceCarousel: React.FC<ServiceCarouselProps> = ({
     "Consulting",
   ];
 
-  // Duplicamos los servicios para crear un efecto infinito
   const allServices = [...services, ...services];
 
   const [width, setWidth] = useState(0);
@@ -32,7 +31,6 @@ const ServiceCarousel: React.FC<ServiceCarouselProps> = ({
 
   useEffect(() => {
     if (carouselRef.current) {
-      // Obtenemos el ancho total del contenido
       setWidth(carouselRef.current.scrollWidth / 2);
     }
   }, []);
