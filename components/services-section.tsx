@@ -5,12 +5,13 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { servicesText } from "@/constants/services-translations";
+import { useLanguage } from "@/context/lang-context";
 
 const ServicesSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const lang = "es";
-  const t = servicesText[lang];
+  const { language } = useLanguage();
+  const t = servicesText[language as keyof typeof servicesText];
 
   const containerVariants = {
     hidden: { opacity: 0 },

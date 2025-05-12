@@ -13,4 +13,11 @@ export const heroText = {
     getStarted: "Comenzar ahora",
     viewServices: "Ver nuestros servicios",
   },
+  ja: {
+    title: "デジタルソリューションであなたの未来を築く",
+    description:
+      "は360度のコンサルティングエージェンシーです。私たちの仕事の中心は、クライアントがテクノロジーを基盤に未来を築けるよう支援することです。人材、プロセス、テクノロジーを通じてリスクを軽減し、効率を向上させます。",
+    getStarted: "今すぐ始める",
+    viewServices: "サービスを見る",
+  },
 };

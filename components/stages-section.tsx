@@ -4,12 +4,13 @@ import Link from "next/link";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { stagesText } from "@/constants/stages.translations";
+import { useLanguage } from "@/context/lang-context";
 
 const Stages = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const lang = "es";
-  const t = stagesText[lang];
+  const { language } = useLanguage();
+  const t = stagesText[language as keyof typeof stagesText];
 
   const containerVariants = {
     hidden: { opacity: 0 },

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Github, Instagram, Linkedin } from "lucide-react";
 import { footerText } from "@/constants/footer";
+import { useLanguage } from "@/context/lang-context";
+import { LanguageSwitcher } from "./ui/language-switcher";
 
 const Footer = () => {
   const fadeInUp = {
@@ -13,8 +15,8 @@ const Footer = () => {
     viewport: { once: true },
   };
 
-  const lang = "es";
-  const t = footerText[lang];
+  const { language } = useLanguage();
+  const t = footerText[language as keyof typeof footerText];
 
   return (
     <footer id="footer" className="bg-black text-white overflow-hidden">
@@ -57,6 +59,7 @@ const Footer = () => {
               <a href="mailto:contact@fndrs.com" className="text-sm">
                 {t.contactLabel}
               </a>
+              <LanguageSwitcher />
             </div>
           </motion.div>
         </div>

@@ -7,13 +7,14 @@ import { Github, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { navbarText } from "@/constants/navbar-translations";
+import { useLanguage } from "@/context/lang-context";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  const lang = "es";
-  const t = navbarText[lang];
+  const { language } = useLanguage();
+  const t = navbarText[language as keyof typeof navbarText];
 
   return (
     <motion.header

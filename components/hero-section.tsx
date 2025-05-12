@@ -7,11 +7,12 @@ import ServiceCarousel from "./services-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { heroText } from "@/constants/hero-section-translations";
+import { useLanguage } from "@/context/lang-context";
 
 const HeroSection = () => {
   const router = useRouter();
-  const lang = "es";
-  const t = heroText[lang];
+  const { language } = useLanguage();
+  const t = heroText[language as keyof typeof heroText];
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-white to-white">

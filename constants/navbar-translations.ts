@@ -19,4 +19,14 @@ export const navbarText = {
     cta: "Habla con nosotros",
     mobileCTA: "Hablemos",
   },
+  ja: {
+    nav: [
+      { href: "/#home", label: "ホーム" },
+      { href: "/#about", label: "私たちについて" },
+      { href: "/#process", label: "プロセス" },
+      { href: "/#services", label: "サービス" },
+    ],
+    cta: "プロジェクトについて相談する",
+    mobileCTA: "話しましょう",
+  },
 };

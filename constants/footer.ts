@@ -58,4 +58,34 @@ export const footerText = {
     copyright: (year: number) =>
       `Copyright © ${year} FNDRS. Todos los derechos reservados.`,
   },
+
+  ja: {
+    collaborationNote: "どんなコラボレーションでも歓迎します",
+    consultationTitle:
+      "無料相談を予約して、貴社の成功にどう貢献できるかをご確認ください！",
+    introParagraph:
+      "デジタルプレゼンスを高める準備はできていますか？FNDRSがあなたのアイデアを視覚的に魅力的な成果に変える方法をご紹介します。",
+    cta: "今すぐ始める",
+    contactEmail: "メールアドレス",
+    contactLabel: "contact@fndrs.com",
+    socialTitle: "フォローはこちら：",
+    navTitle: "ナビゲーション",
+    navLinks: [
+      { label: "ホーム", href: "/#home" },
+      { label: "サービス", href: "/#services" },
+      { label: "私たちのプロセス", href: "/#process" },
+    ],
+    companyTitle: "会社情報",
+    companyLinks: [
+      { label: "私たちについて", href: "/#about" },
+      { label: "キャリア", href: "/#team" },
+    ],
+    legalTitle: "法務",
+    legalLinks: [
+      { label: "利用規約", href: "#" },
+      { label: "プライバシーポリシー", href: "#" },
+    ],
+    copyright: (year: number) =>
+      `Copyright © ${year} FNDRS. 無断転載を禁じます。`,
+  },
 };

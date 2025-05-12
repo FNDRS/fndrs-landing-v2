@@ -7,6 +7,7 @@ import * as z from "zod";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { contactFormText } from "@/constants/contact-translations";
+import { useLanguage } from "@/context/lang-context";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -33,8 +34,8 @@ const fadeIn = {
 };
 
 const ContactForm = () => {
-  const lang = "es";
-  const t = contactFormText[lang];
+  const { language } = useLanguage();
+  const t = contactFormText[language as keyof typeof contactFormText];
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);

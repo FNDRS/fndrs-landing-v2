@@ -55,4 +55,32 @@ export const teamText = {
       },
     ],
   },
+  ja: {
+    heading: "すべてを実現する創業メンバーを紹介します",
+    description:
+      "私たちは長年にわたりスタートアップで働き、デジタル体験を構築し、テック企業と協力してきました。",
+    members: [
+      {
+        name: "Carlos Alberto",
+        role: "ソフトウェアエンジニア & クラウドアーキテクト",
+        bio: "スタートアップ向けのスケーラブルなアーキテクチャに取り組むバックエンドの専門家。クラウドインフラとAPI開発に精通しています。",
+        image: "/placeholder.svg?height=400&width=400",
+        bgColor: "bg-blue-100",
+      },
+      {
+        name: "Jorge Torres",
+        role: "プロダクトデザイナー & クリエイティブディレクター",
+        bio: "FNDRSでデザインを統括。UX/UI戦略とビジュアルストーリーテリングを融合させ、印象的なデジタル体験を創出します。",
+        image: "/placeholder.svg?height=400&width=400",
+        bgColor: "bg-purple-100",
+      },
+      {
+        name: "M Geovany Castro",
+        role: "ソフトウェアエンジニア & プロジェクトマネージャー",
+        bio: "FNDRSでソフトウェアの納品をリード。Savvlyなどのフィンテックやスタートアップでの経験があり、Webやモバイルアプリを開発しています。",
+        image: "/placeholder.svg?height=400&width=400",
+        bgColor: "bg-green-100",
+      },
+    ],
+  },
 };

@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { teamText } from "@/constants/team-trasnlations";
+import { useLanguage } from "@/context/lang-context";
 
 const MotionH2 = motion("h2");
 const MotionDiv = motion.div;
@@ -61,8 +62,8 @@ const TeamMember = ({
 const Team = () => {
   const teamRef = useRef(null);
   const isInView = useInView(teamRef, { once: true, amount: 0.2 });
-  const lang = "es";
-  const t = teamText[lang];
+  const { language } = useLanguage();
+  const t = teamText[language as keyof typeof teamText];
 
   return (
     <section id="team" className="px-4 py-20 bg-gray-50" ref={teamRef}>
@@ -75,7 +76,7 @@ const Team = () => {
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
           >
-            {lang === "es" ? (
+            {language === "es" ? (
               <>
                 Conoce al equipo{" "}
                 <span className="font-bold text-[#333]">Fundador</span> que lo

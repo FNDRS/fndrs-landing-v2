@@ -1,6 +1,7 @@
 "use client";
 
 import { aboutText } from "@/constants/about-translations";
+import { useLanguage } from "@/context/lang-context";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
@@ -28,8 +29,8 @@ const AboutSection = () => {
     },
   };
 
-  const lang = "es";
-  const t = aboutText[lang];
+  const { language } = useLanguage();
+  const t = aboutText[language as keyof typeof aboutText];
 
   return (
     <section id="about" className="py-20" ref={ref}>
