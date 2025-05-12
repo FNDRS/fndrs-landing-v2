@@ -39,7 +39,7 @@ const ServiceCarousel: React.FC<ServiceCarouselProps> = ({
 
   return (
     <div
-      className={`${className} w-full overflow-hidden bg-black text-white py-4`}
+      className={`${className} w-full overflow-hidden bg-black text-white py-8 select-none`}
     >
       <motion.div
         ref={carouselRef}

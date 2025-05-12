@@ -1,129 +1,219 @@
+import Link from "next/link";
+import {
+  ArrowRight,
+  DiscIcon as Discord,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+} from "lucide-react";
+
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-12">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <div className="text-2xl font-bold mb-2">FNDRS</div>
-            <p className="text-gray-400 max-w-xs">
-              Building digital solutions that help clients found and build their
-              future based on technology.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+    <footer id="footer" className="bg-black text-white overflow-hidden">
+      <div className="p-8 md:p-12 border-b border-zinc-800">
+        <div className="container mx-auto grid md:grid-cols-[minmax(0,_600px)_1fr] gap-8">
+          <div>
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-1 h-1 bg-white/80 rounded-full" />
+              <p className="text-xs text-white/70">
+                Open for any collaboration
+              </p>
+            </div>
             <div>
-              <h3 className="text-lg font-semibold mb-4">Company</h3>
-              <ul className="space-y-2">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 leading-normal">
+                Book a free consultation now to discover how we can help your
+                business to thrive!
+              </h2>
+            </div>
+            <div className="mt-8">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full hover:bg-zinc-900 transition-colors"
+              >
+                <span>Get started today</span>
+                <span className="flex items-center justify-center w-8 h-8 bg-white text-black rounded-full">
+                  <ArrowRight size={16} />
+                </span>
+              </Link>
+            </div>
+          </div>
+          <div className="flex flex-col justify-center md:items-end space-y-6">
+            <div></div>
+            <div>
+              <h3 className="text-zinc-400 mb-1">Email address</h3>
+              <a href="mailto:contact@fndrs.com">contact@fndrs.com</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Middle section with links */}
+      <div className="p-8 md:p-12 border-b border-zinc-800">
+        <div className="container mx-auto grid md:grid-cols-2 gap-8">
+          <div className="lg:col-span-1 w-full">
+            <p className="text-lg mb-6 max-w-sm">
+              Ready to elevate your digital presence? Contact us to discuss how
+              FNDRS can turn your ideas into visually captivating realities that
+              drive results.
+            </p>
+            <div>
+              <h3 className="mb-4">Visit us on:</h3>
+              <div className="flex gap-2">
+                <Link
+                  href="https://www.instagram.com/the.fndrs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
+                >
+                  <Instagram size={20} />
+                </Link>
+                <Link
+                  href="https://www.linkedin.com/company/the-fndrs/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
+                >
+                  <Linkedin size={20} />
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-8">
+            <div>
+              <h3 className="text-lg text-zinc-500 font-medium mb-6">
+                Navigation
+              </h3>
+              <ul className="space-y-4">
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                  <Link
+                    href="/#home"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    About
-                  </a>
+                    Homepage
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                  <Link
+                    href="/#services"
+                    className="hover:text-zinc-300 transition-colors"
                   >
                     Services
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                  <Link
+                    href="/#process"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    Team
-                  </a>
+                    Our Process
+                  </Link>
                 </li>
-                <li>
-                  <a
+                {/*  <li>
+                  <Link
                     href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    Careers
-                  </a>
-                </li>
+                    Expertise
+                  </Link>
+                </li> */}
+
+                {/*  <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Projects
+                  </Link>
+                </li> */}
+                {/*  <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Testimonials
+                  </Link>
+                </li> */}
               </ul>
             </div>
-
             <div>
-              <h3 className="text-lg font-semibold mb-4">Resources</h3>
-              <ul className="space-y-2">
+              <h3 className="text-lg font-medium mb-6 text-zinc-500">
+                Company
+              </h3>
+              <ul className="space-y-4">
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                  <Link
+                    href="/#about"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    Blog
-                  </a>
+                    About us
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                  <Link
+                    href="/#about"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    Case Studies
-                  </a>
+                    Career
+                  </Link>
                 </li>
-                <li>
-                  <a
+                {/*   <li>
+                  <Link
                     href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="hover:text-zinc-300 transition-colors"
                   >
-                    Guides
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition-colors"
-                  >
-                    FAQ
-                  </a>
-                </li>
+                    Blogs
+                  </Link>
+                </li> */}
               </ul>
             </div>
-
-            <div className="col-span-2 md:col-span-1">
-              <h3 className="text-lg font-semibold mb-4">Contact</h3>
-              <ul className="space-y-2">
-                <li className="text-gray-400">info@fndrs.com</li>
-                <li className="text-gray-400">+1 (555) 123-4567</li>
-                <li className="text-gray-400">123 Innovation St, Tech City</li>
+            <div>
+              <h3 className="text-lg font-medium mb-6 text-zinc-500">Legal</h3>
+              <ul className="space-y-4">
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Terms of service
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Privacy policy
+                  </Link>
+                </li>
+                {/*  <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Cookies
+                  </Link>
+                </li> */}
+                {/*  <li>
+                  <Link
+                    href="#"
+                    className="hover:text-zinc-300 transition-colors"
+                  >
+                    Changelog
+                  </Link>
+                </li> */}
               </ul>
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} FNDRS. All rights reserved.
+      {/* Copyright section */}
+      <div className="p-6">
+        <div className="container mx-auto">
+          <p className="text-center text-sm text-zinc-500">
+            Copyright © {new Date().getFullYear()} FNDRS. All Rights Reserved.
           </p>
-
-          <div className="flex space-x-6">
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Terms of Service
-            </a>
-            <a
-              href="#"
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              Cookie Policy
-            </a>
-          </div>
         </div>
       </div>
     </footer>

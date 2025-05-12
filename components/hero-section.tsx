@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import ServiceCarousel from "./services-carousel";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const HeroSection = () => {
+  const router = useRouter();
   return (
     <section className="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -16,10 +19,10 @@ const HeroSection = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[65px] mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[85px] mb-6">
               Building Your Future With Digital Solutions
             </h1>
-            <p className="text-lg text-[#a2a2a2] font-light mb-8 max-w-lg">
+            <p className="text-lg text-black/60 font-normal mb-8 max-w-lg">
               <strong className="font-bold">FNDRS </strong>
               is a 360 consulting agency. The focus of our work is help clients
               to found and build their future based on technology, mitigating
@@ -30,6 +33,7 @@ const HeroSection = () => {
                 size="lg"
                 className="font-medium bg-black text-white"
                 variant="outline"
+                onClick={() => router.push("#process")}
               >
                 Get Started
                 <ArrowUpRight className="ml-2" size={16} />
@@ -38,6 +42,7 @@ const HeroSection = () => {
                 size="lg"
                 variant="outline"
                 className="font-medium hover:bg-gray-100 hover:text-gray-800"
+                onClick={() => router.push("#services")}
               >
                 View Our Services
               </Button>
@@ -51,29 +56,14 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Primer recuadro */}
-            <div className="relative z-10 bg-gray-100 rounded-lg p-6 shadow-lg">
-              <div className="text-5xl font-bold mb-2">∞</div>
-              <p className="text-gray-600 text-sm">
-                Endless possibilities for new projects
-              </p>
-            </div>
-
-            {/* Segundo recuadro */}
-            <div className="absolute top-1/2 right-0 transform translate-x-1/4 -translate-y-1/4 z-20 bg-white rounded-lg p-6 shadow-lg">
-              <div className="text-5xl font-bold mb-2">0</div>
-              <p className="text-gray-600 text-sm">
-                We're just starting—let's build success stories together
-              </p>
-            </div>
-
-            {/* Tercer recuadro */}
-            <div className="absolute bottom-0 left-1/4 transform -translate-x-1/4 translate-y-1/4 z-30 bg-gray-800 text-white rounded-lg p-6 shadow-lg">
-              <div className="text-5xl font-bold mb-2">1</div>
-              <p className="text-gray-300 text-sm">
-                Your project could be our first milestone
-              </p>
-            </div>
+            <Image
+              width={500}
+              height={200}
+              src="/hero-image.png"
+              className="rounded-lg h-[450px] w-[300px] mx-auto"
+              alt="Description of image"
+              objectFit="cover"
+            />
           </motion.div>
         </div>
       </div>

@@ -14,7 +14,6 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "FNDRS | 360 Consulting Agency",
   description: "Building digital solutions for your future",
-  generator: "v0.dev",
 };
 
 export default function RootLayout({

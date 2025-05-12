@@ -1,12 +1,10 @@
-import Navbar from "@/components/navbar"
-import HeroSection from "@/components/hero-section"
-import ServicesSection from "@/components/services-section"
-import AboutSection from "@/components/about-section"
-import ApproachSection from "@/components/approach-section"
-import SolutionsSection from "@/components/solutions-section"
-import SuccessSection from "@/components/success-section"
-import ContactSection from "@/components/contact-section"
-import Footer from "@/components/footer"
+import Navbar from "@/components/navbar";
+import HeroSection from "@/components/hero-section";
+import ServicesSection from "@/components/services-section";
+import AboutSection from "@/components/about-section";
+import Footer from "@/components/footer";
+import StagesSection from "@/components/stages-section";
+import Team from "@/components/meet-the-team-section";
 
 export default function Home() {
   return (
@@ -14,13 +12,11 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <ApproachSection />
+      <Team />
+      {/* <ApproachSection /> */}
+      <StagesSection />
       <ServicesSection />
-      <SolutionsSection />
-      <SuccessSection />
-      <ContactSection />
       <Footer />
     </main>
-  )
+  );
 }
-

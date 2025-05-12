@@ -35,104 +35,95 @@ const ServicesSection = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
+          className="w-full"
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-center mb-4"
+            className="text-5xl font-light text-center mb-4 mx-auto max-w-md"
           >
             Tailored Solutions For Your Needs
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-gray-600 text-center mb-16 max-w-2xl mx-auto"
+            className="text-black/40 text-center mb-16 max-w-lg mx-auto"
           >
-            From sleek mobile applications to enterprise-level websites, we have
-            the expertise needed to deliver.
+            From sleek mobile app interfaces to user-friendly websites, our team
+            of experts delivers functional.
           </motion.p>
 
           <motion.div
             variants={containerVariants}
-            className="max-w-4xl mx-auto space-y-6"
+            className="max-w-9xl mx-auto space-y-6 "
           >
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex justify-between items-center"
+              className="border-b border-gray-200 p-6 flex flex-row justify-between items-center"
             >
-              <div>
-                <h3 className="text-xl font-bold mb-2">
-                  Digital Strategy & Consulting
-                </h3>
-                <p className="text-gray-600">
-                  Our strategic consulting helps chart your digital
-                  transformation journey with clear roadmaps and actionable
-                  insights.
-                </p>
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-gray-400" />
+              <h3 className="text-4xl max-w-xl">
+                Digital Strategy & Consulting
+              </h3>
+              <p className="text-black/40 mx-auto max-w-sm text-md">
+                Our strategic consulting helps chart your digital transformation
+                journey with clear roadmap and actionable insights.
+              </p>
+              <ArrowUpRight className="w-10 h-10" />
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex justify-between items-center"
+              className="border-b border-gray-200 p-6 flex flex-row justify-between items-center"
             >
-              <div>
-                <h3 className="text-xl font-bold mb-2">
-                  Web & Mobile Development
-                </h3>
-                <p className="text-gray-600">
-                  We create responsive websites and powerful mobile applications
-                  that engage users and drive conversions.
-                </p>
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-gray-400" />
+              <h3 className="text-4xl max-w-lg leading-relaxed">
+                Website & Mobile Development
+              </h3>
+              <p className="text-black/40 mx-auto max-w-sm text-md">
+                We create responsive websites and powerful mobile applications
+                that engage users and drive conversions.
+              </p>
+              <ArrowUpRight className="w-10 h-10" />
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex justify-between items-center"
+              className="border-b w-full border-gray-200 p-6 flex flex-row justify-between items-center"
             >
-              <div>
-                <h3 className="text-xl font-bold mb-2">UX/UI Design</h3>
-                <p className="text-gray-600">
-                  Our user-centered design creates intuitive, engaging
-                  interfaces that enhance user satisfaction and business
-                  outcomes.
-                </p>
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-gray-400" />
+              <h3 className="text-4xl w-full max-w-lg min-w-lg leading-relaxed">
+                UX/UI Design
+              </h3>
+              <p className="text-black/40 mx-auto max-w-sm text-md">
+                Our user-centered design creates intuitive, engaging interfaces
+                that enhance user satisfaction and business outcomes.
+              </p>
+              <ArrowUpRight className="w-10 h-10" />
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex justify-between items-center"
+              className="border-b border-gray-200 p-6 flex flex-row justify-between items-center"
             >
-              <div>
-                <h3 className="text-xl font-bold mb-2">
-                  Technology Implementation
-                </h3>
-                <p className="text-gray-600">
-                  We implement cutting-edge technologies that automate processes
-                  and drive efficiency across your organization.
-                </p>
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-gray-400" />
+              <h3 className="text-4xl max-w-lg leading-relaxed">
+                Technology Implementation
+              </h3>
+              <p className="text-black/40 mx-auto max-w-sm text-md">
+                We implement cutting-edge technologies that automate processes
+                and drive efficiency across your organization.
+              </p>
+              <ArrowUpRight className="w-10 h-10" />
             </motion.div>
 
             <motion.div
               variants={itemVariants}
-              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 flex justify-between items-center"
+              className="border-b border-gray-200 p-6 flex flex-row justify-between items-center"
             >
-              <div>
-                <h3 className="text-xl font-bold mb-2">
-                  Risk Mitigation & Security
-                </h3>
-                <p className="text-gray-600">
-                  We build robust security frameworks that protect your digital
-                  assets and ensure business continuity.
-                </p>
-              </div>
-              <ArrowUpRight className="w-6 h-6 text-gray-400" />
+              <h3 className="text-4xl max-w-lg w-full leading-relaxed">
+                Risk Mitigation & Security
+              </h3>
+              <p className="text-black/40 mx-auto max-w-sm text-md">
+                We build robust security frameworks that protect your digital
+                assets and ensure business continuity.
+              </p>
+              <ArrowUpRight className="w-10 h-10" />
             </motion.div>
           </motion.div>
         </motion.div>

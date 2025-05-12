@@ -31,11 +31,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20 bg-black text-white rounded-tr-[3rem] rounded-tl-[3rem]"
-      ref={ref}
-    >
+    <section id="contact" className="py-20 bg-black text-white" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -59,7 +55,7 @@ const ContactSection = () => {
             drive results.
           </motion.p>
 
-          <motion.form
+          {/*  <motion.form
             variants={containerVariants}
             className="bg-black border-white/20 border-2 p-8 rounded-3xl shadow-lg text-left"
           >
@@ -128,7 +124,7 @@ const ContactSection = () => {
                 Send Message
               </Button>
             </motion.div>
-          </motion.form>
+          </motion.form> */}
         </motion.div>
       </div>
     </section>
