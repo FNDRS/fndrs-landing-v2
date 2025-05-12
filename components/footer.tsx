@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Linkedin } from "lucide-react";
+import { ArrowRight, Github, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const fadeInUp = {
@@ -90,6 +90,14 @@ const Footer = () => {
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
                 >
                   <Linkedin size={20} />
+                </Link>
+                <Link
+                  href="https://github.com/FNDRS"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
+                >
+                  <Github size={20} />
                 </Link>
               </div>
             </div>

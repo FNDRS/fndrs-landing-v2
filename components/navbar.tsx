@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
-import { motion } from "framer-motion";
+import { Github, Instagram, Linkedin, Menu, X } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
@@ -70,27 +70,90 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <motion.div
-          className="md:hidden bg-white"
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navItems.map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="hover:text-black transition-colors py-2"
-                onClick={() => setIsOpen(false)}
-              >
-                {label}
-              </Link>
-            ))}
-            <Button className="w-full">Get Started</Button>
-          </div>
-        </motion.div>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              key="mobile-menu"
+              className="absolute top-full left-0 w-full bg-white border-t border-zinc-200 shadow-2xl rounded-b-3xl md:hidden z-40 "
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
+                {/* Navigation Links */}
+                <div className="flex flex-col gap-4">
+                  {navItems.map(({ href, label }) => (
+                    <motion.div
+                      key={href}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.25 }}
+                    >
+                      <Link
+                        href={href}
+                        onClick={() => setIsOpen(false)}
+                        className="block text-base font-medium text-black hover:text-zinc-600 transition-colors"
+                      >
+                        {label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Call to Action */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25, delay: 0.05 }}
+                >
+                  <Button
+                    className="w-full bg-black text-white"
+                    onClick={() => {
+                      setIsOpen(false);
+                      router.push("/contact");
+                    }}
+                  >
+                    Let's Talk
+                  </Button>
+                </motion.div>
+
+                {/* Socials */}
+                <motion.div
+                  className="flex gap-2 mt-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.25 }}
+                >
+                  <Link
+                    href="https://www.instagram.com/the.fndrs/"
+                    target="_blank"
+                    className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
+                  >
+                    <Instagram size={18} />
+                  </Link>
+                  <Link
+                    href="https://github.com/FNDRS"
+                    target="_blank"
+                    className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
+                  >
+                    <Github size={18} />
+                  </Link>
+                  <Link
+                    href="https://www.linkedin.com/company/the-fndrs/"
+                    target="_blank"
+                    className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
+                  >
+                    <Linkedin size={18} />
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       )}
     </motion.header>
   );

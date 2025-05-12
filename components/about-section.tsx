@@ -38,7 +38,7 @@ const AboutSection = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-5xl font-normal text-center mb-4"
+            className="md:text-5xl text-3xl font-normal text-center mb-4"
           >
             FNDRS&apos;s Solutions Surpass Expectations
           </motion.h2>

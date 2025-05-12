@@ -90,7 +90,7 @@ const Team = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <MotionH2
-            className="text-5xl font-normal leading-tight max-w-lg"
+            className="text-4xl md:text-5xl font-normal leading-tight max-w-lg"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -114,7 +114,7 @@ const Team = () => {
         </div>
 
         <motion.div
-          className="flex flex-col md:flex-row md:gap-16"
+          className="flex flex-col md:flex-row gap-8 md:gap-16"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}

@@ -67,7 +67,7 @@ const Stages = () => {
   ];
 
   return (
-    <section id="process" className="max-w-6xl mx-auto px-4 py-20" ref={ref}>
+    <section id="process" className="md:max-w-6xl mx-auto px-4 py-20" ref={ref}>
       <div className="mb-8">
         <div className="uppercase text-sm tracking-wider text-gray-500 mb-4">
           PROCESS
@@ -99,17 +99,17 @@ const Stages = () => {
             variants={itemVariants}
             className="py-10 border-b border-gray-200"
           >
-            <div className="grid grid-cols-12 gap-4">
-              <div className="col-span-1">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+              <div className="md:col-span-1">
                 <div className="text-xs text-gray-400">step {stage.step}</div>
               </div>
-              <div className="col-span-5">
-                <h3 className="text-3xl md:text-4xl font-normal">
+              <div className="md:col-span-5">
+                <h3 className="text-2xl md:text-3xl font-normal">
                   {stage.title}
                 </h3>
               </div>
-              <div className="col-span-6 flex justify-end">
-                <p className="text-md text-gray-500 max-w-lg leading-loose">
+              <div className="md:col-span-6">
+                <p className="text-md text-gray-500 max-w-full leading-loose">
                   {stage.description}
                 </p>
               </div>
@@ -120,13 +120,15 @@ const Stages = () => {
 
       {/* Call to Action */}
       <motion.div
-        className="mt-32 text-center"
+        className="mt-20 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.4 }}
         viewport={{ once: true }}
       >
-        <h3 className="text-3xl font-light mb-4">Start a project?</h3>
+        <h3 className="text-2xl md:text-3xl font-light mb-4">
+          Start a project?
+        </h3>
         <Link
           href="/contact"
           className="text-xs uppercase inline-flex items-center hover:underline"
