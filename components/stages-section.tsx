@@ -68,7 +68,7 @@ const Stages = () => {
                 </h3>
               </div>
               <div className="col-span-6 flex justify-end">
-                <p className="text-sm text-gray-600 max-w-[400px] leading-loose">
+                <p className="text-md text-gray-500 max-w-lg leading-loose">
                   {stage.description}
                 </p>
               </div>
@@ -79,7 +79,7 @@ const Stages = () => {
 
       {/* Call to Action */}
       <div className="mt-32 text-center">
-        <h2 className="text-3xl font-light mb-4">Start a project?</h2>
+        <h3 className="text-3xl font-light mb-4">Start a project?</h3>
         <Link
           href="/contact"
           className="text-xs uppercase inline-flex items-center hover:underline"

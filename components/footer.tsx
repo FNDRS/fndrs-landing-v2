@@ -42,7 +42,9 @@ const Footer = () => {
             <div></div>
             <div>
               <h3 className="text-zinc-400 mb-1">Email address</h3>
-              <a href="mailto:contact@fndrs.com">contact@fndrs.com</a>
+              <a href="mailto:contact@fndrs.com" className="text-sm">
+                contact@fndrs.com
+              </a>
             </div>
           </div>
         </div>
@@ -81,14 +83,14 @@ const Footer = () => {
           </div>
           <div className="grid grid-cols-3 gap-8">
             <div>
-              <h3 className="text-lg text-zinc-500 font-medium mb-6">
+              <h3 className="text-md text-zinc-500 font-medium mb-6">
                 Navigation
               </h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="/#home"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Homepage
                   </Link>
@@ -96,7 +98,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/#services"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Services
                   </Link>
@@ -104,7 +106,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="/#process"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Our Process
                   </Link>
@@ -137,22 +139,22 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-medium mb-6 text-zinc-500">
+              <h3 className="text-md font-medium mb-6 text-zinc-500">
                 Company
               </h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="/#about"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     About us
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href="/#about"
-                    className="hover:text-zinc-300 transition-colors"
+                    href="/#team"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Career
                   </Link>
@@ -168,12 +170,12 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h3 className="text-lg font-medium mb-6 text-zinc-500">Legal</h3>
+              <h3 className="text-md font-medium mb-6 text-zinc-500">Legal</h3>
               <ul className="space-y-4">
                 <li>
                   <Link
                     href="#"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Terms of service
                   </Link>
@@ -181,7 +183,7 @@ const Footer = () => {
                 <li>
                   <Link
                     href="#"
-                    className="hover:text-zinc-300 transition-colors"
+                    className="hover:text-zinc-300 transition-colors text-sm"
                   >
                     Privacy policy
                   </Link>

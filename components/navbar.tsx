@@ -11,10 +11,10 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const navItems = [
-    { href: "#home", label: "Home" },
-    { href: "#about", label: "Why Us" },
-    { href: "#process", label: "Our Process" },
-    { href: "#services", label: "Services" },
+    { href: "/#home", label: "Home" },
+    { href: "/#about", label: "Why Us" },
+    { href: "/#process", label: "Our Process" },
+    { href: "/#services", label: "Services" },
   ];
 
   return (

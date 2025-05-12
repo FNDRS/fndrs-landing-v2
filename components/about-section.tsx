@@ -28,7 +28,7 @@ const AboutSection = () => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-50" ref={ref}>
+    <section id="about" className="py-20" ref={ref}>
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -38,14 +38,14 @@ const AboutSection = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl font-normal text-center mb-4"
+            className="text-5xl font-normal text-center mb-4"
           >
             FNDRS&apos;s Solutions Surpass Expectations
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-gray-600 text-center mb-16 text-lg"
+            className="text-gray-500 text-center mb-16 text-lg"
           >
             We are your partner in crafting digital brilliance. Our expertise
             spans across multiple domains to deliver exceptional results.
@@ -57,7 +57,7 @@ const AboutSection = () => {
           >
             <motion.div variants={itemVariants} className="text-center">
               <h3 className="text-2xl font-normal mb-4">Passionate Creators</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-500">
                 We are a team of visionary creators, strategists, and
                 innovators. With a deep passion for design and technology.
               </p>
@@ -65,7 +65,7 @@ const AboutSection = () => {
 
             <motion.div variants={itemVariants} className="text-center">
               <h3 className="text-2xl font-normal mb-4">Innovators</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-500">
                 We constantly push the boundaries of what's possible, bringing
                 fresh ideas and innovative solutions to every project.
               </p>
@@ -73,7 +73,7 @@ const AboutSection = () => {
 
             <motion.div variants={itemVariants} className="text-center">
               <h3 className="text-2xl font-normal mb-4">Visionaries</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-500">
                 We don't just solve today's problems – we anticipate tomorrow's
                 challenges and prepare your business for the future.
               </p>

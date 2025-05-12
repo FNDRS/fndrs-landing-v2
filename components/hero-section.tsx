@@ -10,8 +10,20 @@ import { useRouter } from "next/navigation";
 const HeroSection = () => {
   const router = useRouter();
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-white to-white">
+      {/* Grid overlay */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(200, 200, 200, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Texto principal */}
           <motion.div
@@ -22,7 +34,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[85px] mb-6">
               Building Your Future With Digital Solutions
             </h1>
-            <p className="text-lg text-black/60 font-normal mb-8 max-w-lg">
+            <p className="text-md text-gray-500 font-normal mb-8 max-w-lg">
               <strong className="font-bold">FNDRS </strong>
               is a 360 consulting agency. The focus of our work is help clients
               to found and build their future based on technology, mitigating
@@ -72,7 +84,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
-        className="mt-16 md:mt-24"
+        className="mt-16 md:mt-24 relative z-10"
       >
         <ServiceCarousel />
       </motion.div>

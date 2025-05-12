@@ -39,17 +39,20 @@ const ServicesSection = () => {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-5xl font-light text-center mb-4 mx-auto max-w-md"
+            className="text-5xl font-normal text-center mb-4 mx-auto max-w-md"
           >
-            Tailored Solutions For Your Needs
+            Services we Offer
           </motion.h2>
 
           <motion.p
             variants={itemVariants}
-            className="text-black/40 text-center mb-16 max-w-lg mx-auto"
+            className="text-gray-500 text-md text-center mb-16 max-w-2xl mx-auto"
           >
-            From sleek mobile app interfaces to user-friendly websites, our team
-            of experts delivers functional.
+            FNDRS covers to a wide range of clients, from small business to
+            large enterprises, ensuring each project is tailored to meet the
+            specific needs and goals of the clients. From user-friendly websites
+            to functional applications, our team of experts delivers functional
+            solutions.
           </motion.p>
 
           <motion.div
@@ -63,7 +66,7 @@ const ServicesSection = () => {
               <h3 className="text-4xl max-w-xl">
                 Digital Strategy & Consulting
               </h3>
-              <p className="text-black/40 mx-auto max-w-sm text-md">
+              <p className="text-gray-500 mx-auto max-w-sm text-md">
                 Our strategic consulting helps chart your digital transformation
                 journey with clear roadmap and actionable insights.
               </p>
@@ -77,7 +80,7 @@ const ServicesSection = () => {
               <h3 className="text-4xl max-w-lg leading-relaxed">
                 Website & Mobile Development
               </h3>
-              <p className="text-black/40 mx-auto max-w-sm text-md">
+              <p className="text-gray-500 mx-auto max-w-sm text-md">
                 We create responsive websites and powerful mobile applications
                 that engage users and drive conversions.
               </p>
@@ -91,7 +94,7 @@ const ServicesSection = () => {
               <h3 className="text-4xl w-full max-w-lg min-w-lg leading-relaxed">
                 UX/UI Design
               </h3>
-              <p className="text-black/40 mx-auto max-w-sm text-md">
+              <p className="text-gray-500 mx-auto max-w-sm text-md">
                 Our user-centered design creates intuitive, engaging interfaces
                 that enhance user satisfaction and business outcomes.
               </p>
@@ -105,7 +108,7 @@ const ServicesSection = () => {
               <h3 className="text-4xl max-w-lg leading-relaxed">
                 Technology Implementation
               </h3>
-              <p className="text-black/40 mx-auto max-w-sm text-md">
+              <p className="text-gray-500 mx-auto max-w-sm text-md">
                 We implement cutting-edge technologies that automate processes
                 and drive efficiency across your organization.
               </p>
@@ -119,7 +122,7 @@ const ServicesSection = () => {
               <h3 className="text-4xl max-w-lg w-full leading-relaxed">
                 Risk Mitigation & Security
               </h3>
-              <p className="text-black/40 mx-auto max-w-sm text-md">
+              <p className="text-gray-500 mx-auto max-w-sm text-md">
                 We build robust security frameworks that protect your digital
                 assets and ensure business continuity.
               </p>

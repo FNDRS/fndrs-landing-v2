@@ -57,32 +57,35 @@ const Team = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium leading-tight">
-          Meet the FOUNDER team that makes it all happen
-        </h1>
-        <div className="flex items-center justify-end">
-          <p className="text-sm text-gray-600 max-w-[300px] leading-loose">
-            We have spent years working on startups, building out digital
-            experiences and working on tech companies.
-          </p>
+    <section id="team" className="px-4 py-20 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
+          <h2 className="text-5xl font-normal leading-tight max-w-lg">
+            Meet the <span className="font-bold text-[#333]">Founding</span>{" "}
+            team that makes it all happen
+          </h2>
+          <div className="flex items-center justify-end">
+            <p className="text-md text-gray-500 max-w-md leading-loose">
+              We have spent years working on startups, building out digital
+              experiences and working on tech companies.
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col md:flex-row md:gap-16">
+          {teamMembers.map((member, index) => (
+            <TeamMember
+              key={index}
+              name={member.name}
+              role={member.role}
+              bio={member.bio}
+              image={member.image}
+              bgColor={member.bgColor}
+            />
+          ))}
         </div>
       </div>
-
-      <div className="flex flex-col md:flex-row md:gap-16">
-        {teamMembers.map((member, index) => (
-          <TeamMember
-            key={index}
-            name={member.name}
-            role={member.role}
-            bio={member.bio}
-            image={member.image}
-            bgColor={member.bgColor}
-          />
-        ))}
-      </div>
-    </div>
+    </section>
   );
 };
 
