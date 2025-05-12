@@ -2,7 +2,7 @@ export const navbarText = {
   en: {
     nav: [
       { href: "/#home", label: "Home" },
-      { href: "/#about", label: "Why Us" },
+      { href: "/#whyUs", label: "Why Us" },
       { href: "/#process", label: "Our Process" },
       { href: "/#services", label: "Services" },
     ],
@@ -12,7 +12,7 @@ export const navbarText = {
   es: {
     nav: [
       { href: "/#home", label: "Inicio" },
-      { href: "/#about", label: "Por qué nosotros" },
+      { href: "/#whyUs", label: "Por qué nosotros" },
       { href: "/#process", label: "Nuestro proceso" },
       { href: "/#services", label: "Servicios" },
     ],
@@ -22,7 +22,7 @@ export const navbarText = {
   ja: {
     nav: [
       { href: "/#home", label: "ホーム" },
-      { href: "/#about", label: "私たちについて" },
+      { href: "/#whyUs", label: "私たちについて" },
       { href: "/#process", label: "プロセス" },
       { href: "/#services", label: "サービス" },
     ],

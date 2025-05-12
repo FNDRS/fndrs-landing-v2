@@ -33,23 +33,21 @@ const TeamMember = ({
   role,
   bio,
   image,
-  bgColor,
 }: {
   name: string;
   role: string;
   bio: string;
   image: string;
-  bgColor: string;
 }) => {
   return (
     <motion.div className="flex flex-col" variants={itemVariants}>
-      <div className={`rounded-2xl overflow-hidden mb-3 ${bgColor}`}>
+      <div className={`rounded-2xl overflow-hidden mb-3`}>
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
           width={320}
           height={320}
-          className="w-full h-auto object-cover aspect-square"
+          className="w-full h-96 object-cover aspect-square"
         />
       </div>
       <h3 className="text-md font-medium mb-1">{name}</h3>
@@ -70,7 +68,7 @@ const Team = () => {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <MotionH2
-            className="text-4xl md:text-6xl font-medium leading-relaxed max-w-xl"
+            className="text-4xl font-bold md:text-6xl md:font-medium max-w-xl"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
@@ -115,7 +113,6 @@ const Team = () => {
               role={member.role}
               bio={member.bio}
               image={member.image}
-              bgColor={member.bgColor}
             />
           ))}
         </motion.div>

@@ -22,6 +22,7 @@ export const contactFormText = {
       { value: "branding", label: "Branding" },
       { value: "web-development", label: "Web Development" },
       { value: "marketing", label: "Marketing Strategy" },
+      { value: "seo-optimization", label: "SEO Optimization" },
     ],
     budgetOptions: [
       { value: "1k-5k", label: "$1k - $5k" },
@@ -54,6 +55,7 @@ export const contactFormText = {
       { value: "branding", label: "Branding" },
       { value: "web-development", label: "Desarrollo Web" },
       { value: "marketing", label: "Estrategia de Marketing" },
+      { value: "seo-optimization", label: "Optimización SEO" },
     ],
     budgetOptions: [
       { value: "1k-5k", label: "$1k - $5k" },

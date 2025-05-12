@@ -63,19 +63,43 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.div
-            className="relative"
+            className="relative flex flex-row gap-2 justify-center items-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             <Image
-              width={500}
-              height={200}
-              src="/hero-image.png"
-              className="rounded-lg h-[450px] w-[300px] mx-auto"
+              priority
+              quality={100}
+              width={3024}
+              height={4032}
+              src="/hero-image.jpeg"
+              className="rounded-xl shadow-lg h-[450px] w-auto"
               alt="Description of image"
               objectFit="cover"
             />
+            <div className="flex flex-col gap-2">
+              <Image
+                priority
+                quality={100}
+                width={3024}
+                height={4032}
+                src="/hero-2.jpeg"
+                className="rounded-xl shadow-lg h-[225px] w-auto"
+                alt="Description of image"
+                objectFit="cover"
+              />
+              <Image
+                priority
+                quality={100}
+                width={3024}
+                height={4032}
+                src="/hero-3.jpeg"
+                className="rounded-xl shadow-lg h-[225px] w-auto"
+                alt="Description of image"
+                objectFit="cover"
+              />
+            </div>
           </motion.div>
         </div>
       </div>
