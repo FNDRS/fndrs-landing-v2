@@ -1,32 +1,40 @@
+"use client";
+
 import Link from "next/link";
-import {
-  ArrowRight,
-  DiscIcon as Discord,
-  Facebook,
-  Instagram,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 },
+    viewport: { once: true },
+  };
+
   return (
     <footer id="footer" className="bg-black text-white overflow-hidden">
-      <div className="p-8 md:p-12 border-b border-zinc-800">
+      <motion.div
+        className="p-8 md:p-12 border-b border-zinc-800"
+        {...fadeInUp}
+      >
         <div className="container mx-auto grid md:grid-cols-[minmax(0,_600px)_1fr] gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-1 h-1 bg-white/80 rounded-full" />
-              <p className="text-xs text-white/70">
-                Open for any collaboration
-              </p>
-            </div>
-            <div>
+            <motion.div {...fadeInUp}>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-1 h-1 bg-white/80 rounded-full" />
+                <p className="text-xs text-white/70">
+                  Open for any collaboration
+                </p>
+              </div>
+            </motion.div>
+            <motion.div {...fadeInUp}>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 leading-normal">
                 Book a free consultation now to discover how we can help your
                 business to thrive!
               </h2>
-            </div>
-            <div className="mt-8">
+            </motion.div>
+            <motion.div className="mt-8" {...fadeInUp}>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full hover:bg-zinc-900 transition-colors"
@@ -36,9 +44,12 @@ const Footer = () => {
                   <ArrowRight size={16} />
                 </span>
               </Link>
-            </div>
+            </motion.div>
           </div>
-          <div className="flex flex-col justify-center md:items-end space-y-6">
+          <motion.div
+            className="flex flex-col justify-center md:items-end space-y-6"
+            {...fadeInUp}
+          >
             <div></div>
             <div>
               <h3 className="text-zinc-400 mb-1">Email address</h3>
@@ -46,14 +57,16 @@ const Footer = () => {
                 contact@fndrs.com
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Middle section with links */}
-      <div className="p-8 md:p-12 border-b border-zinc-800">
+      <motion.div
+        className="p-8 md:p-12 border-b border-zinc-800"
+        {...fadeInUp}
+      >
         <div className="container mx-auto grid md:grid-cols-2 gap-8">
-          <div className="lg:col-span-1 w-full">
+          <motion.div className="lg:col-span-1 w-full" {...fadeInUp}>
             <p className="text-lg mb-6 max-w-sm">
               Ready to elevate your digital presence? Contact us to discuss how
               FNDRS can turn your ideas into visually captivating realities that
@@ -80,8 +93,8 @@ const Footer = () => {
                 </Link>
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-3 gap-8">
+          </motion.div>
+          <motion.div className="grid grid-cols-3 gap-8" {...fadeInUp}>
             <div>
               <h3 className="text-md text-zinc-500 font-medium mb-6">
                 Navigation
@@ -111,31 +124,6 @@ const Footer = () => {
                     Our Process
                   </Link>
                 </li>
-                {/*  <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Expertise
-                  </Link>
-                </li> */}
-
-                {/*  <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Projects
-                  </Link>
-                </li> */}
-                {/*  <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Testimonials
-                  </Link>
-                </li> */}
               </ul>
             </div>
             <div>
@@ -159,14 +147,6 @@ const Footer = () => {
                     Career
                   </Link>
                 </li>
-                {/*   <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Blogs
-                  </Link>
-                </li> */}
               </ul>
             </div>
             <div>
@@ -188,36 +168,19 @@ const Footer = () => {
                     Privacy policy
                   </Link>
                 </li>
-                {/*  <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Cookies
-                  </Link>
-                </li> */}
-                {/*  <li>
-                  <Link
-                    href="#"
-                    className="hover:text-zinc-300 transition-colors"
-                  >
-                    Changelog
-                  </Link>
-                </li> */}
               </ul>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Copyright section */}
-      <div className="p-6">
+      <motion.div className="p-6" {...fadeInUp}>
         <div className="container mx-auto">
           <p className="text-center text-sm text-zinc-500">
             Copyright © {new Date().getFullYear()} FNDRS. All Rights Reserved.
           </p>
         </div>
-      </div>
+      </motion.div>
     </footer>
   );
 };

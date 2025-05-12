@@ -5,6 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
@@ -20,6 +21,15 @@ const formSchema = z.object({
 });
 
 type FormValues = z.infer<typeof formSchema>;
+
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6 },
+  }),
+};
 
 const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,9 +91,15 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="mb-10">
+    <section className="pb-20 pt-20 overflow-hidden">
+      <motion.div
+        className="max-w-2xl mx-auto px-4 py-12"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+      >
+        <motion.div variants={fadeIn} custom={0} className="mb-10">
           <h1 className="text-4xl md:text-7xl text-center font-bold mb-4">
             <span className="text-gray-400">Say Hi!</span> and tell us about
             your idea
@@ -91,10 +107,17 @@ const ContactForm = () => {
           <p className="text-gray-600 text-center">
             Have a nice works? Reach out and let&apos;s chat.
           </p>
-        </div>
+        </motion.div>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <div>
+        <motion.form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-8"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          <motion.div variants={fadeIn} custom={1}>
             <label htmlFor="name" className="block text-sm font-medium mb-2">
               Name*
             </label>
@@ -110,9 +133,9 @@ const ContactForm = () => {
             {errors.name && (
               <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
             )}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn} custom={2}>
             <label htmlFor="email" className="block text-sm font-medium mb-2">
               Email*
             </label>
@@ -130,9 +153,9 @@ const ContactForm = () => {
                 {errors.email.message}
               </p>
             )}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn} custom={3}>
             <label htmlFor="company" className="block text-sm font-medium mb-2">
               Company Name
             </label>
@@ -143,9 +166,9 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border-b border-gray-300 focus:border-black outline-none transition-colors"
               {...register("company")}
             />
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn} custom={4}>
             <label className="block text-sm font-medium mb-3">
               What&apos;s in your mind?*
             </label>
@@ -187,9 +210,9 @@ const ContactForm = () => {
                 {errors.services.message}
               </p>
             )}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn} custom={5}>
             <label className="block text-sm font-medium mb-3">
               How much your budget range?*
             </label>
@@ -225,9 +248,9 @@ const ContactForm = () => {
                 {errors.budget.message}
               </p>
             )}
-          </div>
+          </motion.div>
 
-          <div>
+          <motion.div variants={fadeIn} custom={6}>
             <label htmlFor="message" className="block text-sm font-medium mb-2">
               Message*
             </label>
@@ -245,9 +268,9 @@ const ContactForm = () => {
                 {errors.message.message}
               </p>
             )}
-          </div>
+          </motion.div>
 
-          <div className="pt-4">
+          <motion.div className="pt-4" variants={fadeIn} custom={7}>
             <button
               type="submit"
               disabled={isSubmitting}
@@ -262,9 +285,9 @@ const ContactForm = () => {
                 Thank you for your message! We&apos;ll get back to you soon.
               </p>
             )}
-          </div>
-        </form>
-      </div>
+          </motion.div>
+        </motion.form>
+      </motion.div>
     </section>
   );
 };

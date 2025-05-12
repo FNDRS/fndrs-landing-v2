@@ -11,7 +11,6 @@ const HeroSection = () => {
   const router = useRouter();
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-white to-white">
-      {/* Grid overlay */}
       <div
         className="absolute inset-0 z-0"
         style={{
@@ -25,7 +24,6 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Texto principal */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -34,7 +32,7 @@ const HeroSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[85px] mb-6">
               Building Your Future With Digital Solutions
             </h1>
-            <p className="text-md text-gray-500 font-normal mb-8 max-w-lg">
+            <p className="text- leading-loose text-gray-500 font-normal mb-8 max-w-lg">
               <strong className="font-bold">FNDRS </strong>
               is a 360 consulting agency. The focus of our work is help clients
               to found and build their future based on technology, mitigating
@@ -61,7 +59,6 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Sección de "impresiones"/estadísticas adaptada a una agencia nueva */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -79,7 +76,6 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
-      {/* Carousel de servicios */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
