@@ -68,37 +68,40 @@ const HeroSection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <Image
-              priority
-              quality={100}
-              width={3024}
-              height={4032}
-              src="/hero-image.jpeg"
-              className="rounded-xl shadow-lg h-[450px] w-auto"
-              alt="Description of image"
-              objectFit="cover"
-            />
-            <div className="flex flex-col gap-2">
+            <div className="relative w-[60%] h-[450px]">
               <Image
                 priority
                 quality={100}
-                width={3024}
-                height={4032}
-                src="/hero-2.jpeg"
-                className="rounded-xl shadow-lg h-[225px] w-auto"
-                alt="Description of image"
-                objectFit="cover"
+                src="/hero-image.jpeg"
+                className="rounded-xl shadow-lg object-cover grayscale"
+                alt="Hero image"
+                fill
+                sizes="(max-width: 768px) 100vw, 60vw"
               />
-              <Image
-                priority
-                quality={100}
-                width={3024}
-                height={4032}
-                src="/hero-3.jpeg"
-                className="rounded-xl shadow-lg h-[225px] w-auto"
-                alt="Description of image"
-                objectFit="cover"
-              />
+            </div>
+            <div className="flex flex-col gap-2 w-[40%]">
+              <div className="relative w-full h-[225px]">
+                <Image
+                  priority
+                  quality={100}
+                  src="/hero-2.jpeg"
+                  className="rounded-xl shadow-lg object-cover grayscale"
+                  alt="Hero image 2"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
+              <div className="relative w-full h-[225px]">
+                <Image
+                  priority
+                  quality={100}
+                  src="/hero-3.jpeg"
+                  className="rounded-xl shadow-lg object-cover grayscale"
+                  alt="Hero image 3"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                />
+              </div>
             </div>
           </motion.div>
         </div>
