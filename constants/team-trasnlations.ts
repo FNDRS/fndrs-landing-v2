@@ -5,7 +5,6 @@ const memberUnchangedData = [
       es: "Carlos Alberto",
       ja: "Carlos Alberto",
     },
-    image: "/assets/branding/partner-1.jpeg",
   },
   {
     name: {
@@ -13,7 +12,7 @@ const memberUnchangedData = [
       es: "Jorge Torres",
       ja: "Jorge Torres",
     },
-    image: "/assets/branding/partner-2.jpeg",
+    image: "/assets/branding/partner-2.webp",
   },
   {
     name: {
@@ -21,7 +20,6 @@ const memberUnchangedData = [
       es: "M Geovany Castro",
       ja: "M Geovany Castro",
     },
-    image: "/assets/branding/partner-3.jpeg",
   },
 ];
 

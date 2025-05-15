@@ -43,7 +43,7 @@ const TeamMember = ({
     <motion.div className="flex flex-col" variants={itemVariants}>
       <div className={`rounded-2xl overflow-hidden mb-3`}>
         <Image
-          src={image || "/misc/placeholder.svg"}
+          src={image || "/assets/misc/placeholder.svg"}
           alt={name}
           width={320}
           height={320}
