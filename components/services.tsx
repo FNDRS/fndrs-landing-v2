@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { servicesText } from "@/constants/services-translations";
 import { useLanguage } from "@/context/lang-context";
 
-const ServicesSection = () => {
+const Services = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   const { language } = useLanguage();
@@ -81,4 +81,4 @@ const ServicesSection = () => {
   );
 };
 
-export default ServicesSection;
+export default Services;

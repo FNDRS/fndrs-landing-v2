@@ -12,7 +12,7 @@ import {
   Clock,
 } from "lucide-react";
 
-const WhyUsSection = () => {
+const WhyUs = () => {
   const { language } = useLanguage();
   const t = whyUsText[language as keyof typeof whyUsText];
 
@@ -100,4 +100,4 @@ const WhyUsSection = () => {
   );
 };
 
-export default WhyUsSection;
+export default WhyUs;

@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { heroText } from "@/constants/hero-section-translations";
 import { useLanguage } from "@/context/lang-context";
 
-const HeroSection = () => {
+const Home = () => {
   const router = useRouter();
   const { language } = useLanguage();
   const t = heroText[language as keyof typeof heroText];
@@ -119,4 +119,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Home;

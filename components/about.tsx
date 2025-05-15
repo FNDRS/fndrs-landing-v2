@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-const AboutSection = () => {
+const About = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
@@ -76,4 +76,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default About;

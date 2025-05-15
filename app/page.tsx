@@ -1,20 +1,20 @@
 import Navbar from "@/components/navbar";
-import HeroSection from "@/components/hero-section";
-import ServicesSection from "@/components/services-section";
-import StagesSection from "@/components/stages";
-import Team from "@/components/meet-the-team-section";
+import HomeSection from "@/components/home";
+import Services from "@/components/services";
+import Stages from "@/components/stages";
+import Team from "@/components/team";
 import Footer from "@/components/footer";
-import WhyUsSection from "@/components/why-us";
+import WhyUs from "@/components/why-us";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <HeroSection />
-      <WhyUsSection />
+      <HomeSection />
+      <WhyUs />
       <Team />
-      <StagesSection />
-      <ServicesSection />
+      <Stages />
+      <Services />
       <Footer />
     </main>
   );
