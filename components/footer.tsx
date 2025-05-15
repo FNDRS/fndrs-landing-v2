@@ -21,7 +21,7 @@ const Footer = () => {
   return (
     <footer id="footer" className="bg-black text-white overflow-hidden">
       <motion.div
-        className="p-8 md:p-12 border-b border-zinc-800"
+        className="py-4 md:p-12 border-b border-zinc-800"
         {...fadeInUp}
       >
         <div className="container mx-auto grid md:grid-cols-[minmax(0,_600px)_1fr] gap-8">
@@ -66,7 +66,7 @@ const Footer = () => {
       </motion.div>
 
       <motion.div
-        className="p-8 md:p-12 border-b border-zinc-800"
+        className="pt-4 md:p-12 border-b border-zinc-800"
         {...fadeInUp}
       >
         <div className="container mx-auto grid md:grid-cols-2 gap-8">

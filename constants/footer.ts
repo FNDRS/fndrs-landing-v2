@@ -22,8 +22,8 @@ export const footerText = {
     ],
     legalTitle: "Legal",
     legalLinks: [
-      { label: "Terms of service", href: "#" },
-      { label: "Privacy policy", href: "#" },
+      { label: "Terms of service", href: "/terms" },
+      { label: "Privacy policy", href: "/privacy" },
     ],
     copyright: (year: number) =>
       `Copyright © ${year} FNDRS. All Rights Reserved.`,
@@ -52,8 +52,8 @@ export const footerText = {
     ],
     legalTitle: "Legal",
     legalLinks: [
-      { label: "Términos del servicio", href: "#" },
-      { label: "Política de privacidad", href: "#" },
+      { label: "Términos del servicio", href: "/terms" },
+      { label: "Política de privacidad", href: "/privacy" },
     ],
     copyright: (year: number) =>
       `Copyright © ${year} FNDRS. Todos los derechos reservados.`,
@@ -82,8 +82,8 @@ export const footerText = {
     ],
     legalTitle: "法務",
     legalLinks: [
-      { label: "利用規約", href: "#" },
-      { label: "プライバシーポリシー", href: "#" },
+      { label: "利用規約", href: "/terms" },
+      { label: "プライバシーポリシー", href: "/privacy" },
     ],
     copyright: (year: number) =>
       `Copyright © ${year} FNDRS. 無断転載を禁じます。`,
