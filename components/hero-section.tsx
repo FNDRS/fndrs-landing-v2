@@ -72,7 +72,7 @@ const HeroSection = () => {
               <Image
                 priority
                 quality={100}
-                src="/hero-image.jpeg"
+                src="/assets/branding/hero-image.jpeg"
                 className="rounded-xl shadow-lg object-cover grayscale"
                 alt="Hero image"
                 fill
@@ -84,7 +84,7 @@ const HeroSection = () => {
                 <Image
                   priority
                   quality={100}
-                  src="/hero-2.jpeg"
+                  src="/assets/branding/hero-2.jpeg"
                   className="rounded-xl shadow-lg object-cover grayscale"
                   alt="Hero image 2"
                   fill
@@ -95,7 +95,7 @@ const HeroSection = () => {
                 <Image
                   priority
                   quality={100}
-                  src="/hero-3.jpeg"
+                  src="/assets/branding/hero-3.jpeg"
                   className="rounded-xl shadow-lg object-cover grayscale"
                   alt="Hero image 3"
                   fill

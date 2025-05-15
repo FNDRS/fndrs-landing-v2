@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { navbarText } from "@/constants/navbar-translations";
 import { useLanguage } from "@/context/lang-context";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +26,16 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/#home" className="flex items-center space-x-2">
-          <span className="text-2xl font-bold">FNDRS</span>
+          <Image
+            priority
+            quality={100}
+            src="/assets/branding/fndrs-logo.webp"
+            alt="FNDRS logo"
+            width={35}
+            height={25}
+            className="h-4 w-auto object-cover invert"
+          />
+
           <span className="pl-2 border-l border-black/40">Agency</span>
         </Link>
 

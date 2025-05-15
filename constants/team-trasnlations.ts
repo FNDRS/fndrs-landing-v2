@@ -5,7 +5,7 @@ const memberUnchangedData = [
       es: "Carlos Alberto",
       ja: "Carlos Alberto",
     },
-    image: "/partner-1.jpeg",
+    image: "/assets/branding/partner-1.jpeg",
   },
   {
     name: {
@@ -13,7 +13,7 @@ const memberUnchangedData = [
       es: "Jorge Torres",
       ja: "Jorge Torres",
     },
-    image: "/partner-2.jpeg",
+    image: "/assets/branding/partner-2.jpeg",
   },
   {
     name: {
@@ -21,7 +21,7 @@ const memberUnchangedData = [
       es: "M Geovany Castro",
       ja: "M Geovany Castro",
     },
-    image: "/partner-3.jpeg",
+    image: "/assets/branding/partner-3.jpeg",
   },
 ];
 
@@ -34,19 +34,19 @@ export const teamText = {
       {
         name: memberUnchangedData[0].name.en,
         role: "Software Engineer & Cloud Architect",
-        bio: "Backend specialist working on scalable architectures for startups. Expert in cloud infrastructure and API development.",
+        bio: "Specializes in backend systems and scalable cloud architectures for high-growth startups. Expert in API design, infrastructure automation, and performance-driven solutions.",
         image: memberUnchangedData[0].image,
       },
       {
         name: memberUnchangedData[1].name.en,
-        role: "Product Designer & Creative Director",
-        bio: "Heads design at FNDRS, blending UX/UI strategy with visual storytelling to create impactful digital experiences.",
+        role: "Creative Director & Product Designer",
+        bio: "Leads design at FNDRS, uniting product vision, UX strategy, and visual storytelling to craft digital experiences that drive engagement and elevate brands.",
         image: memberUnchangedData[1].image,
       },
       {
         name: memberUnchangedData[2].name.en,
         role: "Software Engineer & Project Manager",
-        bio: "Leads software delivery at FNDRS, former experience in fintech and startups like Savvly, developing web and mobile apps.",
+        bio: "Leads software delivery at FNDRS, combining technical expertise and operational leadership. Formerly at fintech and startups like Savvly, with a focus on building scalable web and mobile applications.",
         image: memberUnchangedData[2].image,
       },
     ],
@@ -59,19 +59,19 @@ export const teamText = {
       {
         name: memberUnchangedData[0].name.es,
         role: "Ingeniero de Software & Arquitecto Cloud",
-        bio: "Especialista en backend enfocado en arquitecturas escalables para startups. Experto en infraestructura en la nube y desarrollo de APIs.",
+        bio: "Especialista en sistemas backend y arquitecturas cloud escalables para startups en crecimiento. Experto en diseño de APIs, automatización de infraestructura y soluciones orientadas al rendimiento.",
         image: memberUnchangedData[0].image,
       },
       {
         name: memberUnchangedData[1].name.es,
-        role: "Diseñador de Producto & Director Creativo",
-        bio: "Lidera el diseño en FNDRS, combinando estrategia UX/UI con narrativa visual para crear experiencias digitales impactantes.",
+        role: "Director Creativo & Diseñador de Producto",
+        bio: "Lidera el diseño en FNDRS, uniendo visión de producto, estrategia UX y narrativa visual para crear experiencias digitales que generan impacto y fortalecen marcas.",
         image: memberUnchangedData[1].image,
       },
       {
         name: memberUnchangedData[2].name.es,
         role: "Ingeniero de Software & Project Manager",
-        bio: "Lidera la entrega de software en FNDRS, con experiencia previa en fintechs y startups como Savvly, desarrollando apps web y móviles.",
+        bio: "Encabeza la entrega de software en FNDRS, combinando liderazgo operativo con expertise técnico. Experiencia previa en fintechs y startups como Savvly, desarrollando aplicaciones web y móviles escalables.",
         image: memberUnchangedData[2].image,
       },
     ],
@@ -84,19 +84,19 @@ export const teamText = {
       {
         name: memberUnchangedData[0].name.ja,
         role: "ソフトウェアエンジニア & クラウドアーキテクト",
-        bio: "スタートアップ向けのスケーラブルなアーキテクチャに取り組むバックエンドの専門家。クラウドインフラとAPI開発に精通しています。",
+        bio: "成長中のスタートアップ向けに、スケーラブルなバックエンドシステムとクラウドアーキテクチャを構築する専門家。API設計やインフラ自動化、パフォーマンス重視のソリューションに精通。",
         image: memberUnchangedData[0].image,
       },
       {
         name: memberUnchangedData[1].name.ja,
-        role: "プロダクトデザイナー & クリエイティブディレクター",
-        bio: "FNDRSでデザインを統括。UX/UI戦略とビジュアルストーリーテリングを融合させ、印象的なデジタル体験を創出します。",
+        role: "クリエイティブディレクター & プロダクトデザイナー",
+        bio: "FNDRSのデザインをリード。プロダクトビジョン、UX戦略、ビジュアルストーリーテリングを融合し、ブランドを高めるデジタル体験を創出します。",
         image: memberUnchangedData[1].image,
       },
       {
         name: memberUnchangedData[2].name.ja,
         role: "ソフトウェアエンジニア & プロジェクトマネージャー",
-        bio: "FNDRSでソフトウェアの納品をリード。Savvlyなどのフィンテックやスタートアップでの経験があり、Webやモバイルアプリを開発しています。",
+        bio: "FNDRSでソフトウェア開発を統括。技術力と運用リーダーシップを融合し、SavvlyなどのスタートアップでスケーラブルなWeb・モバイルアプリを構築した経験を持つ。",
         image: memberUnchangedData[2].image,
       },
     ],

@@ -4,7 +4,6 @@ import { whyUsText } from "@/constants/why-us-translations";
 import { useLanguage } from "@/context/lang-context";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
   Building2,
   Users,
   Lightbulb,
@@ -12,7 +11,6 @@ import {
   Handshake,
   Clock,
 } from "lucide-react";
-import Link from "next/link";
 
 const WhyUsSection = () => {
   const { language } = useLanguage();

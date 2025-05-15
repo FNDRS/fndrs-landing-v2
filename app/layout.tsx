@@ -2,6 +2,9 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
+import Provider from "./provider";
+import SEO from "@/next-seo.config";
+import SchemaMarkup from "@/components/schema-markup";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -11,10 +14,8 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "FNDRS | 360 Consulting Agency",
-  description: "Building digital solutions for your future",
+  ...SEO,
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -22,12 +23,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <SchemaMarkup />
+      </head>
       <body className={poppins.className}>
         <Provider>{children}</Provider>
       </body>
     </html>
   );
 }
-
-import "./globals.css";
-import Provider from "./provider";

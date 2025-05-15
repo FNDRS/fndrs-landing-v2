@@ -11,7 +11,7 @@ export const whyUsText = {
         number: "1",
         title: "Proven Track Record of Success",
         description:
-          "We deliver results. Our experience spans diverse industries, from fintech to tech companies, where we've consistently developed high-quality solutions that exceed expectations. We bring this extensive expertise to every project, ensuring that you benefit from best practices and real-world insights.",
+          "We’ve consistently met critical goals in complex projects, applying real-world knowledge and proven methods to deliver meaningful results from day one.",
       },
       {
         number: "2",
@@ -23,13 +23,13 @@ export const whyUsText = {
         number: "3",
         title: "Scalable, Future-Ready Solutions",
         description:
-          "We build software with tomorrow in mind. Our solutions are crafted to grow as your business does, seamlessly scaling to meet new demands without compromising performance. With a focus on durability and adaptability, we provide software that evolves alongside you.",
+          "We develop software that grows with your business, adapting to new challenges without compromising performance. Durable, flexible, and built to evolve with you.",
       },
       {
         number: "4",
         title: "Leading-Edge Technology & Innovation",
         description:
-          "Staying ahead is in our DNA. We harness the latest technologies—AI, machine learning, cloud, and DevOps—to power innovative solutions. With us, your business stays at the cutting edge.",
+          "We use technologies like AI, cloud, and DevOps to deliver innovative solutions that keep your business ahead of the curve.",
       },
       {
         number: "5",
@@ -58,7 +58,7 @@ export const whyUsText = {
         number: "1",
         title: "Historial comprobado de éxito",
         description:
-          "Ofrecemos resultados. Nuestra experiencia abarca diversas industrias, desde fintech hasta empresas tecnológicas, donde hemos desarrollado constantemente soluciones de alta calidad que superan las expectativas. Aportamos esta amplia experiencia a cada proyecto, asegurando que te beneficies de las mejores prácticas y conocimientos del mundo real.",
+          "Hemos superado objetivos clave en proyectos complejos, aplicando conocimientos reales y metodologías probadas para generar impacto desde el inicio.",
       },
       {
         number: "2",
@@ -70,25 +70,25 @@ export const whyUsText = {
         number: "3",
         title: "Soluciones escalables y preparadas para el futuro",
         description:
-          "Construimos software con el mañana en mente. Nuestras soluciones están diseñadas para crecer con tu negocio, escalando sin problemas para satisfacer nuevas demandas sin comprometer el rendimiento. Con un enfoque en la durabilidad y adaptabilidad, proporcionamos software que evoluciona contigo.",
+          "Desarrollamos software que crece con tu negocio, adaptándose a nuevos retos sin perder rendimiento. Durable, flexible y listo para evolucionar contigo.",
       },
       {
         number: "4",
         title: "Tecnología e innovación de vanguardia",
         description:
-          "Mantenernos a la vanguardia está en nuestro ADN. Aprovechamos las últimas tecnologías—IA, aprendizaje automático, nube y DevOps—para impulsar soluciones innovadoras. Con nosotros, tu negocio se mantiene en la punta del progreso.",
+          "Aprovechamos las últimas tecnologías—IA, aprendizaje automático, nube y DevOps—para impulsar soluciones innovadoras. Con nosotros, tu negocio se mantiene en la punta del progreso.",
       },
       {
         number: "5",
         title: "Socios de principio a fin",
         description:
-          "Estamos contigo en cada paso—y más allá. Nuestro apoyo no termina con el lanzamiento; proporcionamos optimización continua, escalabilidad y una asociación dedicada para asegurar tu éxito a medida que evolucionan tus necesidades.",
+          "Estamos contigo en cada paso—y más allá. Nuestro apoyo no termina en el lanzamiento; optimización continua, escalabilidad y una asociación dedicada para asegurar tu éxito a medida que evolucionan tus necesidades.",
       },
       {
         number: "6",
         title: "Comunicación transparente y soporte dedicado",
         description:
-          "La claridad y la confiabilidad son nuestra base. Con un gerente de proyecto dedicado, actualizaciones regulares y comunicación abierta, siempre estarás informado. Nuestro equipo de soporte garantiza que todo funcione sin problemas, ofreciendo orientación y asistencia cuando lo necesites.",
+          "La claridad y la confiabilidad son nuestra base. Comunicación abierta. Nuestro equipo de soporte garantiza que todo funcione sin problemas, ofreciendo asistencia cuando lo necesites.",
       },
     ],
   },
@@ -104,7 +104,7 @@ export const whyUsText = {
         number: "1",
         title: "実績ある成功の歴史",
         description:
-          "私たちは結果を提供します。フィンテックからヘルスケアまで、多様な業界で高品質なソリューションを一貫して提供してきました。この豊富な専門知識をすべてのプロジェクトに活かし、実践的な洞察をお届けします。",
+          "複雑なプロジェクトで重要な目標を達成し、現場の知見と確かな手法で初日から成果を出してきました。",
       },
       {
         number: "2",
@@ -116,13 +116,13 @@ export const whyUsText = {
         number: "3",
         title: "スケーラブルで未来志向のソリューション",
         description:
-          "私たちは将来を見据えたソフトウェアを構築します。成長するビジネスに対応し、パフォーマンスを損なうことなく新たな需要にスムーズに対応します。",
+          "ビジネスの成長に合わせて進化するソフトウェアを提供します。柔軟で耐久性があり、変化に強い構築を心がけています。",
       },
       {
         number: "4",
         title: "最先端の技術とイノベーション",
         description:
-          "最新技術の活用が私たちのDNAです。AI、機械学習、クラウド、DevOpsを駆使し、革新的なソリューションを提供します。",
+          "AI、クラウド、DevOpsなどの最新技術を活用し、常に一歩先を行く革新的なソリューションを提供します。",
       },
       {
         number: "5",
