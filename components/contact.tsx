@@ -8,21 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { contactFormText } from "@/constants/contact-translations";
 import { useLanguage } from "@/context/lang-context";
-
-const formSchema = z.object({
-  name: z.string().min(1, { message: "Name is required" }),
-  email: z.string().email({ message: "Please enter a valid email" }),
-  company: z.string().optional(),
-  services: z
-    .array(z.string())
-    .min(1, { message: "Please select at least one service" }),
-  budget: z.string({ required_error: "Please select a budget range" }),
-  message: z
-    .string()
-    .min(10, { message: "Message should be at least 10 characters" }),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import axios from "axios";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -37,6 +23,18 @@ const ContactForm = () => {
   const { language } = useLanguage();
   const t = contactFormText[language as keyof typeof contactFormText];
 
+  const formSchema = z.object({
+    name: z.string().min(1, { message: t.validation.name }),
+    email: z.string().email({ message: t.validation.email }),
+    phoneNumber: z.string().min(7, { message: t.validation.phoneNumber }),
+    company: z.string().optional(),
+    services: z.array(z.string()).min(1, { message: t.validation.services }),
+    budget: z.string({ required_error: t.validation.budget }),
+    message: z.string().min(10, { message: t.validation.message }),
+  });
+
+  type FormValues = z.infer<typeof formSchema>;
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
@@ -46,11 +44,12 @@ const ContactForm = () => {
     control,
     reset,
     formState: { errors },
-  } = useForm<FormValues>({
+  } = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
+      phoneNumber: "",
       company: "",
       services: [],
       budget: "",
@@ -58,11 +57,10 @@ const ContactForm = () => {
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: FormValues): Promise<void> => {
     setIsSubmitting(true);
-
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      await axios.post("/api/contact", data);
       setIsSuccess(true);
       reset();
       setTimeout(() => setIsSuccess(false), 5000);
@@ -134,8 +132,30 @@ const ContactForm = () => {
               </p>
             )}
           </motion.div>
-
           <motion.div variants={fadeIn} custom={3}>
+            <label
+              htmlFor="phoneNumber"
+              className="block text-sm font-medium mb-2"
+            >
+              {t.phoneLabel}
+            </label>
+            <input
+              id="phoneNumber"
+              type="tel"
+              placeholder={t.phonePlaceholder}
+              className={`w-full px-4 py-3 border-b ${
+                errors.phoneNumber ? "border-red-500" : "border-gray-300"
+              } focus:border-black outline-none transition-colors`}
+              {...register("phoneNumber")}
+            />
+            {errors.phoneNumber && (
+              <p className="mt-1 text-sm text-red-500">
+                {errors.phoneNumber.message}
+              </p>
+            )}
+          </motion.div>
+
+          <motion.div variants={fadeIn} custom={4}>
             <label htmlFor="company" className="block text-sm font-medium mb-2">
               {t.companyLabel}
             </label>
@@ -148,7 +168,7 @@ const ContactForm = () => {
             />
           </motion.div>
 
-          <motion.div variants={fadeIn} custom={4}>
+          <motion.div variants={fadeIn} custom={5}>
             <label className="block text-sm font-medium mb-3">
               {t.servicesLabel}
             </label>
@@ -192,7 +212,7 @@ const ContactForm = () => {
             )}
           </motion.div>
 
-          <motion.div variants={fadeIn} custom={5}>
+          <motion.div variants={fadeIn} custom={6}>
             <label className="block text-sm font-medium mb-3">
               {t.budgetLabel}
             </label>
@@ -230,7 +250,7 @@ const ContactForm = () => {
             )}
           </motion.div>
 
-          <motion.div variants={fadeIn} custom={6}>
+          <motion.div variants={fadeIn} custom={7}>
             <label htmlFor="message" className="block text-sm font-medium mb-2">
               {t.messageLabel}
             </label>
@@ -250,7 +270,7 @@ const ContactForm = () => {
             )}
           </motion.div>
 
-          <motion.div className="pt-4" variants={fadeIn} custom={7}>
+          <motion.div className="pt-4" variants={fadeIn} custom={8}>
             <button
               type="submit"
               disabled={isSubmitting}
