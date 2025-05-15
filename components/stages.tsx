@@ -34,9 +34,9 @@ const Stages = () => {
   return (
     <section id="process" className="md:max-w-6xl mx-auto px-4 py-20" ref={ref}>
       <div className="mb-8">
-        <div className="uppercase text-sm tracking-wider text-gray-500 mb-4">
+        <h2 className="uppercase text-sm tracking-wider text-gray-500 mb-4">
           PROCESS
-        </div>
+        </h2>
         <motion.p
           className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug mb-8"
           initial={{ opacity: 0, y: 20 }}
