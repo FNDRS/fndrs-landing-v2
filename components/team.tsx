@@ -40,7 +40,7 @@ const TeamMember = ({
   image: string;
 }) => {
   return (
-    <motion.div className="flex flex-col" variants={itemVariants}>
+    <motion.div className="flex flex-col w-1/3" variants={itemVariants}>
       <div className={`rounded-2xl overflow-hidden mb-3`}>
         <Image
           src={image || "/assets/misc/placeholder.svg"}
@@ -101,20 +101,22 @@ const Team = () => {
         </div>
 
         <motion.div
-          className="flex flex-col md:flex-row gap-8 md:gap-16"
+          className="flex flex-col w-full justify-center items-center md:flex-row gap-8 md:gap-16"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {t.members.map((member, index) => (
-            <TeamMember
-              key={index}
-              name={member.name}
-              role={member.role}
-              bio={member.bio}
-              image={member.image}
-            />
-          ))}
+          <div className="flex gap-8 max-w-5xl">
+            {t.members.map((member, index) => (
+              <TeamMember
+                key={index}
+                name={member.name}
+                role={member.role}
+                bio={member.bio}
+                image={member.image}
+              />
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
