@@ -122,20 +122,25 @@ const Navbar = () => {
                 <Link
                   href="https://www.instagram.com/the.fndrs/"
                   target="_blank"
+                  aria-label="FNDRS's Instagram"
                   className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
                 >
                   <Instagram size={18} />
                 </Link>
+
                 <Link
                   href="https://github.com/FNDRS"
                   target="_blank"
+                  aria-label="FNDRS's Github Organization"
                   className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
                 >
                   <Github size={18} />
                 </Link>
+
                 <Link
                   href="https://www.linkedin.com/company/the-fndrs/"
                   target="_blank"
+                  aria-label="FNDRS's LinkedIn Profile"
                   className="w-10 h-10 flex items-center justify-center border border-zinc-300 rounded-full hover:bg-zinc-100 transition-colors"
                 >
                   <Linkedin size={18} />
