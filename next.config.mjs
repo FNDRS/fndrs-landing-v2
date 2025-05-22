@@ -1,18 +1,17 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
+
 let userConfig = undefined;
 try {
-  // try to import ESM first
   userConfig = await import("./v0-user-next.config.mjs");
 } catch (e) {
   try {
-    // fallback to CJS import
     userConfig = await import("./v0-user-next.config");
-  } catch (innerError) {
-    // ignore error
-  }
+  } catch (innerError) {}
 }
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "standalone",
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -21,8 +20,8 @@ const nextConfig = {
   },
   images: {
     formats: ["image/webp", "image/avif"],
-    deviceSizes: [320, 420, 640, 768], // eliminá 1024 y 1280
-    imageSizes: [240, 384, 512], // opcional, si usás width fija
+    deviceSizes: [320, 420, 640, 768],
+    imageSizes: [240, 384, 512],
     unoptimized: false,
   },
 
@@ -34,7 +33,6 @@ const nextConfig = {
 };
 
 if (userConfig) {
-  // ESM imports will have a "default" property
   const config = userConfig.default || userConfig;
 
   for (const key in config) {
@@ -52,4 +50,6 @@ if (userConfig) {
   }
 }
 
-export default nextConfig;
+export default withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+})(nextConfig);

@@ -4,11 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Github, Instagram, Linkedin, Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import { navbarText } from "@/constants/navbar-translations";
 import { useLanguage } from "@/context/lang-context";
 import Image from "next/image";
+import { AnimatePresence, MotionDiv, MotionHeader } from "./ui/motion-client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ const Navbar = () => {
   const t = navbarText[language as keyof typeof navbarText];
 
   return (
-    <motion.header
+    <MotionHeader
       className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -66,7 +66,7 @@ const Navbar = () => {
       {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <MotionDiv
             key="mobile-menu"
             className="absolute top-full left-0 w-full bg-white border-t border-zinc-200 shadow-2xl rounded-b-3xl md:hidden z-40"
             initial={{ opacity: 0, height: 0 }}
@@ -77,7 +77,7 @@ const Navbar = () => {
             <div className="container mx-auto px-4 py-6 flex flex-col gap-6">
               <div className="flex flex-col gap-4">
                 {t.nav.map(({ href, label }) => (
-                  <motion.div
+                  <MotionDiv
                     key={href}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -91,11 +91,11 @@ const Navbar = () => {
                     >
                       {label}
                     </Link>
-                  </motion.div>
+                  </MotionDiv>
                 ))}
               </div>
 
-              <motion.div
+              <MotionDiv
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
@@ -110,9 +110,9 @@ const Navbar = () => {
                 >
                   {t.mobileCTA}
                 </Button>
-              </motion.div>
+              </MotionDiv>
 
-              <motion.div
+              <MotionDiv
                 className="flex gap-2 mt-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -140,12 +140,12 @@ const Navbar = () => {
                 >
                   <Linkedin size={18} />
                 </Link>
-              </motion.div>
+              </MotionDiv>
             </div>
-          </motion.div>
+          </MotionDiv>
         )}
       </AnimatePresence>
-    </motion.header>
+    </MotionHeader>
   );
 };
 

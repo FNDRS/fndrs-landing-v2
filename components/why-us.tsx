@@ -2,7 +2,6 @@
 
 import { whyUsText } from "@/constants/why-us-translations";
 import { useLanguage } from "@/context/lang-context";
-import { motion } from "framer-motion";
 import {
   Building2,
   Users,
@@ -11,6 +10,7 @@ import {
   Handshake,
   Clock,
 } from "lucide-react";
+import { MotionDiv } from "./ui/motion-client";
 
 const WhyUs = () => {
   const { language } = useLanguage();
@@ -33,7 +33,7 @@ const WhyUs = () => {
   return (
     <section id="whyUs" className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionDiv
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -48,11 +48,11 @@ const WhyUs = () => {
             {t.description}
           </p>
           <p className="text-lg font-light text-gray-700 ">"{t.quote}"</p>
-        </motion.div>
+        </MotionDiv>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {t.reasons.map((reason, index) => (
-            <motion.div
+            <MotionDiv
               key={index}
               initial="hidden"
               whileInView="visible"
@@ -73,10 +73,10 @@ const WhyUs = () => {
               <p className="text-gray-500 text-sm flex-grow">
                 {reason.description}
               </p>
-            </motion.div>
+            </MotionDiv>
           ))}
 
-          {/*  <motion.div
+          {/*  <MotionDiv
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -93,7 +93,7 @@ const WhyUs = () => {
             >
               {t.ctaButton} <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
-          </motion.div> */}
+          </MotionDiv> */}
         </div>
       </div>
     </section>

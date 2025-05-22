@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { useRef, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { MotionDiv } from "./motion-client";
 
 interface ServiceCarouselProps {
   className?: string;
@@ -39,7 +39,7 @@ const ServiceCarousel: React.FC<ServiceCarouselProps> = ({
     <div
       className={`${className} w-full overflow-hidden bg-black text-white py-8 select-none`}
     >
-      <motion.div
+      <MotionDiv
         ref={carouselRef}
         className="flex items-center whitespace-nowrap"
         initial={{ x: 0 }}
@@ -64,7 +64,7 @@ const ServiceCarousel: React.FC<ServiceCarouselProps> = ({
             <span className="text-lg font-normal">{service}</span>
           </div>
         ))}
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 };

@@ -1,9 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { MotionDiv } from "@/components/ui/motion-client";
 import { ArrowUpRight } from "lucide-react";
-import ServiceCarousel from "./services-carousel";
+import ServiceCarousel from "./ui/services-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { heroText } from "@/constants/hero-section-translations";
@@ -29,7 +29,7 @@ const Home = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -60,9 +60,9 @@ const Home = () => {
                 {t.viewServices}
               </Button>
             </div>
-          </motion.div>
+          </MotionDiv>
 
-          <motion.div
+          <MotionDiv
             className="relative flex flex-row gap-2 justify-center items-center"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -76,10 +76,10 @@ const Home = () => {
                 alt="Hero image"
                 fill
                 sizes="(min-width: 1600px) 391px,
-       (min-width: 1300px) calc(10.71vw + 222px),
-       (min-width: 780px) calc(3.4vw + 311px),
-       (min-width: 640px) calc(60vw - 24px),
-       329px"
+                  (min-width: 1300px) calc(10.71vw + 222px),
+                  (min-width: 780px) calc(3.4vw + 311px),
+                  (min-width: 640px) calc(60vw - 24px),
+                  329px"
                 className="absolute inset-0 w-full h-full text-transparent rounded-xl shadow-lg object-cover grayscale"
               />
             </div>
@@ -93,10 +93,10 @@ const Home = () => {
                   alt="Hero image 2"
                   fill
                   sizes="(min-width: 1480px) 261px,
-       (min-width: 1000px) 17.39vw,
-       (min-width: 780px) calc(4vw + 138px),
-       (min-width: 500px) calc(40vw - 16px),
-       calc(3.89vw + 157px)"
+                    (min-width: 1000px) 17.39vw,
+                    (min-width: 780px) calc(4vw + 138px),
+                    (min-width: 500px) calc(40vw - 16px),
+                    calc(3.89vw + 157px)"
                 />
               </div>
               <div className="relative w-full h-[225px]">
@@ -108,25 +108,25 @@ const Home = () => {
                   alt="Hero image 3"
                   fill
                   sizes="(min-width: 1480px) 261px,
-         (min-width: 1000px) 17.39vw,
-         (min-width: 780px) calc(4vw + 138px),
-         (min-width: 500px) calc(40vw - 16px),
-         calc(3.89vw + 157px)"
+                    (min-width: 1000px) 17.39vw,
+                    (min-width: 780px) calc(4vw + 138px),
+                    (min-width: 500px) calc(40vw - 16px),
+                    calc(3.89vw + 157px)"
                 />
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
 
-      <motion.div
+      <MotionDiv
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
         className="mt-16 md:mt-24 relative z-10"
       >
         <ServiceCarousel />
-      </motion.div>
+      </MotionDiv>
     </section>
   );
 };
