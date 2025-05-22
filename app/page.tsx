@@ -1,10 +1,14 @@
+"use client";
+import dynamic from "next/dynamic";
+
 import Navbar from "@/components/navbar";
 import HomeSection from "@/components/home";
-import Services from "@/components/services";
-import Stages from "@/components/stages";
-import Team from "@/components/team";
-import Footer from "@/components/footer";
-import WhyUs from "@/components/why-us";
+
+const WhyUs = dynamic(() => import("@/components/why-us"), { ssr: false });
+const Team = dynamic(() => import("@/components/team"), { ssr: false });
+const Stages = dynamic(() => import("@/components/stages"), { ssr: false });
+const Services = dynamic(() => import("@/components/services"), { ssr: false });
+const Footer = dynamic(() => import("@/components/footer"), { ssr: false });
 
 export default function Home() {
   return (

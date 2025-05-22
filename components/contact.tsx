@@ -17,6 +17,7 @@ const fadeIn = {
     y: 0,
     transition: { delay: i * 0.1, duration: 0.6 },
   }),
+  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
 };
 
 const ContactForm = () => {
@@ -96,14 +97,14 @@ const ContactForm = () => {
           variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
         >
           <MotionDiv variants={fadeIn} custom={1}>
-            <label htmlFor="name" className="block text-sm font-medium mb-2">
+            <label htmlFor="name" className="block text-sm font-medium mb-">
               {t.nameLabel}
             </label>
             <input
               id="name"
               type="text"
               placeholder={t.namePlaceholder}
-              className={`w-full px-4 py-3 border-b ${
+              className={`w-full px-4 py-3 border-b bg-white ${
                 errors.name ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
               {...register("name")}
@@ -121,7 +122,7 @@ const ContactForm = () => {
               id="email"
               type="email"
               placeholder={t.emailPlaceholder}
-              className={`w-full px-4 py-3 border-b ${
+              className={`w-full px-4 py-3 border-b bg-white ${
                 errors.email ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
               {...register("email")}
@@ -143,7 +144,7 @@ const ContactForm = () => {
               id="phoneNumber"
               type="tel"
               placeholder={t.phonePlaceholder}
-              className={`w-full px-4 py-3 border-b ${
+              className={`w-full px-4 py-3 border-b bg-white ${
                 errors.phoneNumber ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
               {...register("phoneNumber")}
@@ -163,7 +164,7 @@ const ContactForm = () => {
               id="company"
               type="text"
               placeholder={t.companyPlaceholder}
-              className="w-full px-4 py-3 border-b border-gray-300 focus:border-black outline-none transition-colors"
+              className="w-full px-4 py-3 border-b bg-white border-gray-300 focus:border-black outline-none transition-colors"
               {...register("company")}
             />
           </MotionDiv>
@@ -258,7 +259,7 @@ const ContactForm = () => {
               id="message"
               placeholder={t.messagePlaceholder}
               rows={4}
-              className={`w-full px-4 py-3 border-b ${
+              className={`w-full px-4 py-3 border-b bg-white ${
                 errors.message ? "border-red-500" : "border-gray-300"
               } focus:border-black outline-none transition-colors`}
               {...register("message")}
