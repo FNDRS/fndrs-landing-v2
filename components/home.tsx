@@ -37,7 +37,10 @@ const Home = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {t.title}
             </h1>
-            <p className="text- leading-loose text-gray-500 font-normal mb-8 max-w-lg">
+            <p
+              className="text- leading-loose text-gray-500 font-normal mb-8 max-w-lg"
+              data-lcp
+            >
               <strong className="font-bold">FNDRS </strong>
               {t.description}
             </p>
