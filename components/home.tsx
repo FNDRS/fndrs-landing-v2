@@ -34,7 +34,7 @@ const Home = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold md:leading-[85px] mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {t.title}
             </h1>
             <p className="text- leading-loose text-gray-500 font-normal mb-8 max-w-lg">
@@ -71,35 +71,47 @@ const Home = () => {
             <div className="relative w-[60%] h-[450px]">
               <Image
                 priority
-                quality={100}
+                quality={80}
                 src="/assets/branding/hero-1.webp"
-                className="rounded-xl shadow-lg object-cover grayscale"
                 alt="Hero image"
                 fill
-                sizes="(max-width: 768px) 100vw, 60vw"
+                sizes="(min-width: 1600px) 391px,
+       (min-width: 1300px) calc(10.71vw + 222px),
+       (min-width: 780px) calc(3.4vw + 311px),
+       (min-width: 640px) calc(60vw - 24px),
+       329px"
+                className="absolute inset-0 w-full h-full text-transparent rounded-xl shadow-lg object-cover grayscale"
               />
             </div>
             <div className="flex flex-col gap-2 w-[40%]">
               <div className="relative w-full h-[225px]">
                 <Image
                   priority
-                  quality={100}
+                  quality={80}
                   src="/assets/branding/hero-2.webp"
-                  className="rounded-xl shadow-lg object-cover grayscale"
+                  className="absolute inset-0 w-full h-full text-transparent rounded-xl shadow-lg object-cover grayscale"
                   alt="Hero image 2"
                   fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
+                  sizes="(min-width: 1480px) 261px,
+       (min-width: 1000px) 17.39vw,
+       (min-width: 780px) calc(4vw + 138px),
+       (min-width: 500px) calc(40vw - 16px),
+       calc(3.89vw + 157px)"
                 />
               </div>
               <div className="relative w-full h-[225px]">
                 <Image
                   priority
-                  quality={100}
+                  quality={80}
                   src="/assets/branding/hero-3.webp"
-                  className="rounded-xl shadow-lg object-cover grayscale"
+                  className="absolute inset-0 w-full h-full text-transparent rounded-xl shadow-lg object-cover grayscale"
                   alt="Hero image 3"
                   fill
-                  sizes="(max-width: 768px) 100vw, 40vw"
+                  sizes="(min-width: 1480px) 261px,
+         (min-width: 1000px) 17.39vw,
+         (min-width: 780px) calc(4vw + 138px),
+         (min-width: 500px) calc(40vw - 16px),
+         calc(3.89vw + 157px)"
                 />
               </div>
             </div>

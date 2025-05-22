@@ -1,7 +1,7 @@
-let userConfig = undefined
+let userConfig = undefined;
 try {
   // try to import ESM first
-  userConfig = await import('./v0-user-next.config.mjs')
+  userConfig = await import("./v0-user-next.config.mjs");
 } catch (e) {
   try {
     // fallback to CJS import
@@ -20,32 +20,36 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    formats: ["image/webp", "image/avif"],
+    deviceSizes: [320, 420, 640, 768], // eliminá 1024 y 1280
+    imageSizes: [240, 384, 512], // opcional, si usás width fija
+    unoptimized: false,
   },
+
   experimental: {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+};
 
 if (userConfig) {
   // ESM imports will have a "default" property
-  const config = userConfig.default || userConfig
+  const config = userConfig.default || userConfig;
 
   for (const key in config) {
     if (
-      typeof nextConfig[key] === 'object' &&
+      typeof nextConfig[key] === "object" &&
       !Array.isArray(nextConfig[key])
     ) {
       nextConfig[key] = {
         ...nextConfig[key],
         ...config[key],
-      }
+      };
     } else {
-      nextConfig[key] = config[key]
+      nextConfig[key] = config[key];
     }
   }
 }
 
-export default nextConfig
+export default nextConfig;

@@ -45,8 +45,9 @@ const TeamMember = ({
         <Image
           src={image || "/assets/misc/placeholder.svg"}
           alt={name}
-          width={320}
-          height={320}
+          width={384}
+          height={384}
+          sizes="384px"
           className="w-full h-96 object-cover aspect-square"
         />
       </div>
@@ -113,7 +114,7 @@ const Team = () => {
                 name={member.name}
                 role={member.role}
                 bio={member.bio}
-                image={member.image}
+                image={member.image ?? "/assets/misc/placeholder.svg"}
               />
             ))}
           </div>
