@@ -1,14 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { stagesText } from "@/constants/stages.translations";
 import { useLanguage } from "@/context/lang-context";
+import { useInViewObserver } from "@/hooks/use-motion-in-view";
+import { MotionDiv, MotionP } from "./ui/motion-client";
 
 const Stages = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInViewObserver(ref, { threshold: 0.3 });
+
   const { language } = useLanguage();
   const t = stagesText[language as keyof typeof stagesText];
 
@@ -37,7 +39,7 @@ const Stages = () => {
         <h2 className="uppercase text-sm tracking-wider text-gray-500 mb-4">
           PROCESS
         </h2>
-        <motion.p
+        <MotionP
           className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug mb-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -62,17 +64,17 @@ const Stages = () => {
               word + " "
             )
           )}
-        </motion.p>
+        </MotionP>
       </div>
 
-      <motion.div
+      <MotionDiv
         className="border-t border-gray-200"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
         {t.stages.map((stage, index) => (
-          <motion.div
+          <MotionDiv
             key={index}
             variants={itemVariants}
             className="py-10 border-b border-gray-200"
@@ -92,12 +94,12 @@ const Stages = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         ))}
-      </motion.div>
+      </MotionDiv>
 
       {/* Call to Action */}
-      <motion.div
+      <MotionDiv
         className="mt-20 text-center"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -126,7 +128,7 @@ const Stages = () => {
             <path d="m12 5 7 7-7 7"></path>
           </svg>
         </Link>
-      </motion.div>
+      </MotionDiv>
     </section>
   );
 };

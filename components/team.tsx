@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { teamText } from "@/constants/team-trasnlations";
 import { useLanguage } from "@/context/lang-context";
-
-const MotionH2 = motion("h2");
-const MotionDiv = motion.div;
+import { MotionDiv, MotionH2 } from "./ui/motion-client";
+import { useInViewObserver } from "@/hooks/use-motion-in-view";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -40,31 +38,33 @@ const TeamMember = ({
   image: string;
 }) => {
   return (
-    <motion.div className="flex flex-col w-1/3" variants={itemVariants}>
+    <MotionDiv className="flex flex-col md:w-1/3" variants={itemVariants}>
       <div className={`rounded-2xl overflow-hidden mb-3`}>
         <Image
           src={image || "/assets/misc/placeholder.svg"}
           alt={name}
-          width={320}
-          height={320}
+          width={384}
+          height={384}
+          sizes="384px"
           className="w-full h-96 object-cover aspect-square"
         />
       </div>
       <h3 className="text-md font-medium mb-1">{name}</h3>
       <p className="text-md mb-2">{role}</p>
       <p className="text-[#6c6c6c] text-sm leading-loose">{bio}</p>
-    </motion.div>
+    </MotionDiv>
   );
 };
 
 const Team = () => {
-  const teamRef = useRef(null);
-  const isInView = useInView(teamRef, { once: true, amount: 0.2 });
+  const ref = useRef(null);
+  const isInView = useInViewObserver(ref, { threshold: 0.3 });
+
   const { language } = useLanguage();
   const t = teamText[language as keyof typeof teamText];
 
   return (
-    <section id="team" className="px-4 py-20 bg-gray-50" ref={teamRef}>
+    <section id="team" className="px-4 py-20 bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
           <MotionH2
@@ -100,24 +100,29 @@ const Team = () => {
           </MotionDiv>
         </div>
 
-        <motion.div
+        <MotionDiv
           className="flex flex-col w-full justify-center items-center md:flex-row gap-8 md:gap-16"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <div className="flex gap-8 max-w-5xl">
+          <MotionDiv
+            className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 max-w-5xl"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+          >
             {t.members.map((member, index) => (
               <TeamMember
                 key={index}
                 name={member.name}
                 role={member.role}
                 bio={member.bio}
-                image={member.image}
+                image={member.image ?? "/assets/misc/placeholder.svg"}
               />
             ))}
-          </div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
       </div>
     </section>
   );

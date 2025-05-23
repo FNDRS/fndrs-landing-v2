@@ -1,13 +1,20 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
 import { termsText } from "@/constants/terms-translations";
 import { useLanguage } from "@/context/lang-context";
+import { useInViewObserver } from "@/hooks/use-motion-in-view";
+import {
+  MotionDiv,
+  MotionH2,
+  MotionP,
+  MotionSection,
+} from "@/components/ui/motion-client";
 
 export default function Terms() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInViewObserver(ref, { threshold: 0.3 });
+
   const { language } = useLanguage();
   const t = termsText[language as keyof typeof termsText];
 
@@ -35,31 +42,28 @@ export default function Terms() {
       ref={ref}
       className="max-w-3xl font-light mx-auto px-4 py-32 text-black space-y-6"
     >
-      <motion.div
+      <MotionDiv
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <motion.h2 variants={itemVariants} className="text-2xl font-light mb-4">
+        <MotionH2 variants={itemVariants} className="text-2xl font-light mb-4">
           {t.title}
-        </motion.h2>
+        </MotionH2>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-sm text-gray-500 mb-4"
-        >
+        <MotionP variants={itemVariants} className="text-sm text-gray-500 mb-4">
           {t.intro}
-        </motion.p>
+        </MotionP>
 
-        <motion.section variants={containerVariants} className="space-y-6">
+        <MotionSection variants={containerVariants} className="space-y-6">
           {t.sections.map((section, idx) => (
-            <motion.div key={idx} variants={itemVariants}>
+            <MotionDiv key={idx} variants={itemVariants}>
               <h3 className="text-lg font-light mb-2">{section.title}</h3>
               <p className="text-sm text-gray-500">{section.content}</p>
-            </motion.div>
+            </MotionDiv>
           ))}
-        </motion.section>
-      </motion.div>
+        </MotionSection>
+      </MotionDiv>
     </main>
   );
 }

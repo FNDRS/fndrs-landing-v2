@@ -1,15 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { servicesText } from "@/constants/services-translations";
 import { useLanguage } from "@/context/lang-context";
+import { useInViewObserver } from "@/hooks/use-motion-in-view";
+import { MotionDiv, MotionH2, MotionP } from "./ui/motion-client";
 
 const Services = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const isInView = useInViewObserver(ref, { threshold: 0.3 });
+
   const { language } = useLanguage();
   const t = servicesText[language as keyof typeof servicesText];
 
@@ -35,32 +36,32 @@ const Services = () => {
   return (
     <section id="services" className="py-20 bg-gray-50" ref={ref}>
       <div className="container mx-auto px-4">
-        <motion.div
+        <MotionDiv
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="w-full"
         >
-          <motion.h2
+          <MotionH2
             variants={itemVariants}
             className="text-3xl sm:text-4xl md:text-5xl font-normal text-center mb-4 mx-auto max-w-md"
           >
             {t.title}
-          </motion.h2>
+          </MotionH2>
 
-          <motion.p
+          <MotionP
             variants={itemVariants}
             className="text-gray-500 text-base sm:text-md text-center mb-16 max-w-2xl mx-auto"
           >
             {t.description}
-          </motion.p>
+          </MotionP>
 
-          <motion.div
+          <MotionDiv
             variants={containerVariants}
             className="max-w-9xl mx-auto space-y-6"
           >
             {t.services.map((service, idx) => (
-              <motion.div
+              <MotionDiv
                 key={idx}
                 variants={itemVariants}
                 className="border-b border-gray-200 p-6 flex flex-col md:flex-row md:justify-between md:items-center gap-4 md:gap-6"
@@ -72,10 +73,10 @@ const Services = () => {
                   {service.description}
                 </p>
                 <ArrowUpRight className="w-10 h-10" />
-              </motion.div>
+              </MotionDiv>
             ))}
-          </motion.div>
-        </motion.div>
+          </MotionDiv>
+        </MotionDiv>
       </div>
     </section>
   );

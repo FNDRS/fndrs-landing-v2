@@ -1,21 +1,23 @@
-import type React from "react";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import "./globals.css";
 import Provider from "./provider";
-import SEO from "@/next-seo.config";
 import SchemaMarkup from "@/components/schema-markup";
+import SEO from "@/next-seo.config";
+
+import "@/styles/critical.css";
+import ClientStyleLoader from "@/components/client-style-loader";
 
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
   ...SEO,
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,6 +29,7 @@ export default function RootLayout({
         <SchemaMarkup />
       </head>
       <body className={poppins.className}>
+        <ClientStyleLoader />
         <Provider>{children}</Provider>
       </body>
     </html>
