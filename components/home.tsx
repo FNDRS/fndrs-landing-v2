@@ -7,7 +7,7 @@ import ServiceCarousel from "./ui/services-carousel";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { heroText } from "@/constants/hero-section-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 
 const Home = () => {
   const router = useRouter();

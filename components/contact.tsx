@@ -6,33 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { ArrowRight } from "lucide-react";
 import { contactFormText } from "@/constants/contact-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import axios from "axios";
 import { MotionDiv, MotionForm } from "./ui/motion-client";
-
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.1, duration: 0.6 },
-  }),
-  exit: { opacity: 0, y: -20, transition: { duration: 0.3 } },
-};
+import { getContactFormSchema } from "@/schemas/contact-form.schema";
 
 const ContactForm = () => {
   const { language } = useLanguage();
   const t = contactFormText[language as keyof typeof contactFormText];
-
-  const formSchema = z.object({
-    name: z.string().min(1, { message: t.validation.name }),
-    email: z.string().email({ message: t.validation.email }),
-    phoneNumber: z.string().min(7, { message: t.validation.phoneNumber }),
-    company: z.string().optional(),
-    services: z.array(z.string()).min(1, { message: t.validation.services }),
-    budget: z.string({ required_error: t.validation.budget }),
-    message: z.string().min(10, { message: t.validation.message }),
-  });
+  const formSchema = getContactFormSchema(t);
 
   type FormValues = z.infer<typeof formSchema>;
 
@@ -76,28 +58,25 @@ const ContactForm = () => {
     <section className="pb-20 pt-20 overflow-hidden">
       <MotionDiv
         className="max-w-2xl mx-auto px-4 py-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <MotionDiv variants={fadeIn} custom={0} className="mb-10">
-          <h1 className="text-4xl md:text-7xl text-center font-bold mb-4">
-            <span className="text-gray-400">{t.titleAccent}</span> {t.titleRest}
-          </h1>
-          <p className="text-gray-600 text-center">{t.subtitle}</p>
-        </MotionDiv>
+        <h1 className="text-4xl md:text-7xl text-center font-bold mb-4">
+          <span className="text-gray-400">{t.titleAccent}</span> {t.titleRest}
+        </h1>
+        <p className="text-gray-600 text-center mb-10">{t.subtitle}</p>
 
         <MotionForm
           onSubmit={handleSubmit(onSubmit)}
           className="space-y-8"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <MotionDiv variants={fadeIn} custom={1}>
-            <label htmlFor="name" className="block text-sm font-medium mb-">
+          {/* Name */}
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium mb-2">
               {t.nameLabel}
             </label>
             <input
@@ -112,9 +91,10 @@ const ContactForm = () => {
             {errors.name && (
               <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
             )}
-          </MotionDiv>
+          </div>
 
-          <MotionDiv variants={fadeIn} custom={2}>
+          {/* Email */}
+          <div>
             <label htmlFor="email" className="block text-sm font-medium mb-2">
               {t.emailLabel}
             </label>
@@ -132,8 +112,10 @@ const ContactForm = () => {
                 {errors.email.message}
               </p>
             )}
-          </MotionDiv>
-          <MotionDiv variants={fadeIn} custom={3}>
+          </div>
+
+          {/* Phone */}
+          <div>
             <label
               htmlFor="phoneNumber"
               className="block text-sm font-medium mb-2"
@@ -154,9 +136,10 @@ const ContactForm = () => {
                 {errors.phoneNumber.message}
               </p>
             )}
-          </MotionDiv>
+          </div>
 
-          <MotionDiv variants={fadeIn} custom={4}>
+          {/* Company */}
+          <div>
             <label htmlFor="company" className="block text-sm font-medium mb-2">
               {t.companyLabel}
             </label>
@@ -167,9 +150,10 @@ const ContactForm = () => {
               className="w-full px-4 py-3 border-b bg-white border-gray-300 focus:border-black outline-none transition-colors"
               {...register("company")}
             />
-          </MotionDiv>
+          </div>
 
-          <MotionDiv variants={fadeIn} custom={5}>
+          {/* Services */}
+          <div>
             <label className="block text-sm font-medium mb-3">
               {t.servicesLabel}
             </label>
@@ -211,9 +195,10 @@ const ContactForm = () => {
                 {errors.services.message}
               </p>
             )}
-          </MotionDiv>
+          </div>
 
-          <MotionDiv variants={fadeIn} custom={6}>
+          {/* Budget */}
+          <div>
             <label className="block text-sm font-medium mb-3">
               {t.budgetLabel}
             </label>
@@ -249,9 +234,10 @@ const ContactForm = () => {
                 {errors.budget.message}
               </p>
             )}
-          </MotionDiv>
+          </div>
 
-          <MotionDiv variants={fadeIn} custom={7}>
+          {/* Message */}
+          <div>
             <label htmlFor="message" className="block text-sm font-medium mb-2">
               {t.messageLabel}
             </label>
@@ -269,9 +255,10 @@ const ContactForm = () => {
                 {errors.message.message}
               </p>
             )}
-          </MotionDiv>
+          </div>
 
-          <MotionDiv className="pt-4" variants={fadeIn} custom={8}>
+          {/* Submit */}
+          <div className="pt-4">
             <button
               type="submit"
               disabled={isSubmitting}
@@ -282,7 +269,7 @@ const ContactForm = () => {
             </button>
 
             {isSuccess && <p className="mt-4 text-green-600">{t.success}</p>}
-          </MotionDiv>
+          </div>
         </MotionForm>
       </MotionDiv>
     </section>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import Provider from "./provider";
+import Provider from "./[lang]/provider";
 import SchemaMarkup from "@/components/schema-markup";
 import SEO from "@/next-seo.config";
 

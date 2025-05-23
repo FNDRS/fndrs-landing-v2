@@ -1,6 +1,6 @@
 "use client";
 
-import { useLanguage } from "@/context/lang-context";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { Language } from "@/types";
 
 const languages: { code: Language; label: string }[] = [
@@ -10,7 +10,18 @@ const languages: { code: Language; label: string }[] = [
 ];
 
 export const LanguageSwitcher: React.FC = () => {
-  const { language, setLanguage } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
+  const params = useParams();
+  const currentLang = params?.lang as Language;
+
+  const handleLanguageChange = (newLang: Language) => {
+    if (!pathname) return;
+    const parts = pathname.split("/");
+    parts[1] = newLang; // reemplaza el lang en la URL
+    const newPath = parts.join("/") || "/";
+    router.push(newPath);
+  };
 
   return (
     <div className="mt-4">
@@ -20,9 +31,9 @@ export const LanguageSwitcher: React.FC = () => {
           {languages.map(({ code, label }) => (
             <button
               key={code}
-              onClick={() => setLanguage(code)}
+              onClick={() => handleLanguageChange(code)}
               className={`px-3 py-1 min-w-20 rounded-full border transition-colors ${
-                language === code
+                currentLang === code
                   ? "bg-white text-black"
                   : "border-zinc-600 hover:bg-zinc-800"
               }`}

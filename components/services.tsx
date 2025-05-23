@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { servicesText } from "@/constants/services-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import { useInViewObserver } from "@/hooks/use-motion-in-view";
 import { MotionDiv, MotionH2, MotionP } from "./ui/motion-client";
 

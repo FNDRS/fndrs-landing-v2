@@ -6,14 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Github, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { navbarText } from "@/constants/navbar-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import Image from "next/image";
 import { AnimatePresence, MotionDiv, MotionHeader } from "./ui/motion-client";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
-
   const { language } = useLanguage();
   const t = navbarText[language as keyof typeof navbarText];
 
@@ -25,7 +24,10 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <Link href="/#home" className="flex items-center space-x-2">
+        <Link
+          href={`/${language}/#home`}
+          className="flex items-center space-x-2"
+        >
           <Image
             priority
             quality={100}
@@ -35,14 +37,17 @@ const Navbar = () => {
             height={25}
             className="h-4 w-auto object-cover invert"
           />
-
           <span className="pl-2 border-l border-black/40">Agency</span>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
           {t.nav.map(({ href, label }) => (
-            <Link key={href} href={href} className="group inline-block">
+            <Link
+              key={href}
+              href={`/${language}/${href}`}
+              className="group inline-block"
+            >
               <span className="relative inline-block text-sm font-semibold text-black/70 transition-colors duration-200 hover:text-black">
                 {label}
                 <span className="absolute left-0 -bottom-1 block h-[4px] w-full bg-black transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -52,7 +57,10 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden md:block">
-          <Button variant="outline" onClick={() => router.push("/contact")}>
+          <Button
+            variant="outline"
+            onClick={() => router.push(`/${language}/contact`)}
+          >
             {t.cta}
           </Button>
         </div>
@@ -91,7 +99,7 @@ const Navbar = () => {
                     transition={{ duration: 0.25 }}
                   >
                     <Link
-                      href={href}
+                      href={`/${language}/${href}`}
                       onClick={() => setIsOpen(false)}
                       className="block text-base font-medium text-black hover:text-zinc-600 transition-colors"
                     >
@@ -111,7 +119,7 @@ const Navbar = () => {
                   className="w-full bg-black text-white"
                   onClick={() => {
                     setIsOpen(false);
-                    router.push("/contact");
+                    router.push(`/${language}/contact`);
                   }}
                 >
                   {t.mobileCTA}
@@ -133,7 +141,6 @@ const Navbar = () => {
                 >
                   <Instagram size={18} />
                 </Link>
-
                 <Link
                   href="https://github.com/FNDRS"
                   target="_blank"
@@ -142,7 +149,6 @@ const Navbar = () => {
                 >
                   <Github size={18} />
                 </Link>
-
                 <Link
                   href="https://www.linkedin.com/company/the-fndrs/"
                   target="_blank"
