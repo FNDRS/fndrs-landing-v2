@@ -1,6 +1,27 @@
 import withBundleAnalyzer from "@next/bundle-analyzer";
 
 let userConfig = undefined;
+
+const securityHeaders = [
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=63072000; includeSubDomains; preload",
+  },
+  {
+    key: "Content-Security-Policy",
+    value: `
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: https:;
+      font-src 'self';
+      connect-src 'self' https:;
+    `
+      .replace(/\n/g, "")
+      .trim(),
+  },
+];
+
 try {
   userConfig = await import("./v0-user-next.config.mjs");
 } catch (e) {
@@ -29,6 +50,15 @@ const nextConfig = {
     webpackBuildWorker: true,
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
+  },
+
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
   },
 };
 
