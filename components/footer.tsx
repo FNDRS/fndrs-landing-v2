@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { ArrowRight, Github, Instagram, Linkedin } from "lucide-react";
-import { footerText } from "@/constants/footer";
-import { useLanguage } from "@/context/lang-context";
+import { footerText } from "@/constants/footer-translations";
+import { useLanguage } from "@/hooks/use-language";
 import { LanguageSwitcher } from "./ui/language-switcher";
 import { MotionDiv } from "./ui/motion-client";
 
@@ -17,6 +17,21 @@ const Footer = () => {
 
   const { language } = useLanguage();
   const t = footerText[language as keyof typeof footerText];
+
+  const navLinks = t.navLinks.map((link) => ({
+    ...link,
+    href: `/${language}${link.href}`,
+  }));
+
+  const companyLinks = t.companyLinks.map((link) => ({
+    ...link,
+    href: `/${language}${link.href}`,
+  }));
+
+  const legalLinks = t.legalLinks.map((link) => ({
+    ...link,
+    href: `/${language}${link.href}`,
+  }));
 
   return (
     <footer id="footer" className="bg-black text-white overflow-hidden">
@@ -39,7 +54,7 @@ const Footer = () => {
             </MotionDiv>
             <MotionDiv className="mt-8" {...fadeInUp}>
               <Link
-                href="/contact"
+                href={`/${language}/contact`}
                 className="inline-flex items-center gap-3 px-6 py-3 border border-zinc-700 rounded-full hover:bg-zinc-900 transition-colors"
               >
                 <span>{t.cta}</span>
@@ -49,11 +64,12 @@ const Footer = () => {
               </Link>
             </MotionDiv>
           </div>
+
           <MotionDiv
             className="flex flex-col justify-center md:items-end space-y-6"
             {...fadeInUp}
           >
-            <div></div>
+            <div />
             <div>
               <h3 className="text-zinc-400 mb-1">{t.contactEmail}</h3>
               <a href="mailto:contact@fndrs.com" className="text-sm">
@@ -102,13 +118,14 @@ const Footer = () => {
               </div>
             </div>
           </MotionDiv>
+
           <MotionDiv className="grid grid-cols-3 gap-8" {...fadeInUp}>
             <div>
               <h3 className="text-md text-zinc-500 font-medium mb-6">
                 {t.navTitle}
               </h3>
               <ul className="space-y-4">
-                {t.navLinks.map((link, index) => (
+                {navLinks.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.href}
@@ -120,12 +137,13 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
+
             <div>
               <h3 className="text-md font-medium mb-6 text-zinc-500">
                 {t.companyTitle}
               </h3>
               <ul className="space-y-4">
-                {t.companyLinks.map((link, index) => (
+                {companyLinks.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.href}
@@ -137,12 +155,13 @@ const Footer = () => {
                 ))}
               </ul>
             </div>
+
             <div>
               <h3 className="text-md font-medium mb-6 text-zinc-500">
                 {t.legalTitle}
               </h3>
               <ul className="space-y-4">
-                {t.legalLinks.map((link, index) => (
+                {legalLinks.map((link, index) => (
                   <li key={index}>
                     <Link
                       href={link.href}

@@ -1,7 +1,7 @@
 "use client";
 
 import { whyUsText } from "@/constants/why-us-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import {
   Building2,
   Users,
