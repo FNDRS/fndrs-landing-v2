@@ -1,4 +1,3 @@
-// /app/[lang]/terms/page.tsx
 import { termsText } from "@/constants/terms-translations";
 import {
   MotionDiv,
@@ -17,11 +16,21 @@ export const metadata: Metadata = {
   description: "Read the terms and conditions for using our services.",
 };
 
+const fadeVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.4 } },
+};
+
 export default function Terms({ params }: Props) {
   const t = termsText[params.lang as keyof typeof termsText];
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-32 text-black space-y-6">
+    <MotionDiv
+      className="max-w-3xl mx-auto px-4 py-32 text-black space-y-6"
+      initial="hidden"
+      animate="visible"
+      variants={fadeVariants}
+    >
       <MotionH2 className="text-2xl font-light mb-4">{t.title}</MotionH2>
       <MotionP className="text-sm text-gray-500 mb-4">{t.intro}</MotionP>
 
@@ -33,7 +42,7 @@ export default function Terms({ params }: Props) {
           </MotionDiv>
         ))}
       </MotionSection>
-    </div>
+    </MotionDiv>
   );
 }
 
