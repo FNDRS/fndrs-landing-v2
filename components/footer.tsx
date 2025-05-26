@@ -94,6 +94,7 @@ const Footer = () => {
                 <Link
                   href="https://www.instagram.com/the.fndrs/"
                   target="_blank"
+                  aria-label="Visit our Instagram"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
                 >
@@ -102,6 +103,7 @@ const Footer = () => {
                 <Link
                   href="https://www.linkedin.com/company/the-fndrs/"
                   target="_blank"
+                  aria-label="Visit our LinkedIn"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
                 >
@@ -110,6 +112,7 @@ const Footer = () => {
                 <Link
                   href="https://github.com/FNDRS"
                   target="_blank"
+                  aria-label="Visit our GitHub"
                   rel="noopener noreferrer"
                   className="w-10 h-10 flex items-center justify-center rounded-full border border-zinc-700 hover:bg-zinc-800 transition-colors"
                 >
