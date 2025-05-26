@@ -32,12 +32,6 @@ try {
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ["es", "en", "ja"],
-    defaultLocale: "es",
-    localeDetection: false,
-  },
-
   productionBrowserSourceMaps: true,
   output: "standalone",
   eslint: {
