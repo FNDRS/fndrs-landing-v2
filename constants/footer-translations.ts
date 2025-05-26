@@ -11,7 +11,7 @@ export const footerText = {
     socialTitle: "Visit us on:",
     navTitle: "Navigation",
     navLinks: [
-      { label: "Homepage", href: "/#home" },
+      { label: "Homepage", href: "#home" },
       { label: "Services", href: "/#services" },
       { label: "Our Process", href: "/#process" },
     ],

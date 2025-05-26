@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { teamText } from "@/constants/team-trasnlations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import { MotionDiv, MotionH2 } from "./ui/motion-client";
 import { useInViewObserver } from "@/hooks/use-motion-in-view";
 
@@ -89,7 +89,7 @@ const Team = () => {
           </MotionH2>
           <MotionDiv
             className="flex items-center justify-end"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
             viewport={{ once: true }}

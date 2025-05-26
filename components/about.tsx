@@ -1,7 +1,7 @@
 "use client";
 
 import { aboutText } from "@/constants/about-translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import { useInViewObserver } from "@/hooks/use-motion-in-view";
 import { useRef } from "react";
 import { MotionDiv, MotionH2, MotionP } from "./ui/motion-client";

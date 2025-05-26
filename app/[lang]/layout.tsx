@@ -1,13 +1,13 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import React from "react";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <main className="min-h-screen bg-white">
+    <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <Navbar />
-      {children}
+      <div />
+      <main className="bg-white w-screen min-h-screen">{children}</main>
       <Footer />
-    </main>
+    </div>
   );
 }

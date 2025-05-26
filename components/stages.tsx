@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { stagesText } from "@/constants/stages.translations";
-import { useLanguage } from "@/context/lang-context";
+import { useLanguage } from "@/hooks/use-language";
 import { useInViewObserver } from "@/hooks/use-motion-in-view";
 import { MotionDiv, MotionP } from "./ui/motion-client";
 
@@ -108,7 +108,7 @@ const Stages = () => {
       >
         <h3 className="text-2xl md:text-3xl font-light mb-4">{t.cta.title}</h3>
         <Link
-          href="/contact"
+          href={`/${language}/contact`}
           className="text-xs uppercase inline-flex items-center hover:underline"
         >
           {t.cta.link}
