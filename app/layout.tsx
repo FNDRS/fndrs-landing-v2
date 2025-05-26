@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import Provider from "./provider";
-import SchemaMarkup from "@/components/schema-markup";
 import SEO from "@/next-seo.config";
 
 import "@/styles/critical.css";
 import ClientStyleLoader from "@/components/client-style-loader";
+import SchemaMarkup from "@/components/schema-markup";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <head>
         <SchemaMarkup />
       </head>
