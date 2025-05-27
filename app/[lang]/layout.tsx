@@ -1,7 +1,36 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
+import type { Metadata } from "next";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+  params: { lang: string };
+};
+
+export function generateMetadata({
+  params,
+}: {
+  params: { lang: string };
+}): Metadata {
+  const baseUrl = "https://www.thefndrs.com";
+  const langPrefix = params.lang === "es" ? "" : `/${params.lang}`;
+
+  return {
+    title: "FNDRS - Make things with excellence",
+    description:
+      "FNDRS is a creative agency that transforms ideas into innovative solutions.",
+    alternates: {
+      canonical: `${baseUrl}${langPrefix}`,
+      languages: {
+        es: `${baseUrl}/`,
+        en: `${baseUrl}/en`,
+        ja: `${baseUrl}/ja`,
+      },
+    },
+  };
+}
+
+export default function Layout({ children }: Props) {
   return (
     <div className="grid min-h-dvh grid-rows-[auto_1fr_auto]">
       <Navbar />
