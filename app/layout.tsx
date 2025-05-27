@@ -26,6 +26,22 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
+        <link rel="alternate" href="https://www.thefndrs.com" hrefLang="es" />
+        <link
+          rel="alternate"
+          href="https://www.thefndrs.com/en"
+          hrefLang="en"
+        />
+        <link
+          rel="alternate"
+          href="https://www.thefndrs.com/ja"
+          hrefLang="ja"
+        />
+        <link
+          rel="alternate"
+          href="https://www.thefndrs.com"
+          hrefLang="x-default"
+        />
         <SchemaMarkup />
       </head>
       <body className={poppins.className}>

@@ -6,7 +6,7 @@ const SEO: Metadata = {
     "FNDRS is a creative agency that transforms ideas into innovative solutions.",
   metadataBase: new URL("https://www.thefndrs.com"),
   alternates: {
-    canonical: "/",
+    canonical: "https://www.thefndrs.com",
   },
   openGraph: {
     type: "website",
