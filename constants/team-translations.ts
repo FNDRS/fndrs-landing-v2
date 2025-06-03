@@ -13,6 +13,7 @@ export interface TeamTextMember {
 export interface TeamTextLocale {
   heading: string;
   description: string;
+  badge: string;
   members: TeamTextMember[];
 }
 
@@ -21,26 +22,26 @@ const memberUnchangedData: (Pick<TeamTextMember, "name" | "image"> &
   {
     name: "Carlos Alberto",
     image: "/assets/branding/partner-1.webp",
-    linkedin: "https://www.linkedin.com/in/carlos-alberto",
+    linkedin: "https://www.linkedin.com/in/carlos-pineda-a1a780220/",
     instagram: "https://www.instagram.com/carlos.alberto",
-    github: "https://github.com/carlos-alberto",
-    website: "https://carlosalberto.dev",
+    github: "https://github.com/carlosp2001",
+    website: "https://portfolio-website-carlosp.fly.dev/",
   },
   {
     name: "Jorge Torres",
     image: "/assets/branding/partner-2.webp",
-    linkedin: "https://www.linkedin.com/in/jorge-torres",
-    instagram: "https://www.instagram.com/jorge.torres",
+    linkedin: "https://www.linkedin.com/in/jorge-torres-5396662a3/",
+    instagram: "https://www.instagram.com/jorgeetorresx/",
     github: "https://github.com/jorge-torres",
-    behance: "https://www.behance.net/jorge-torres",
+    behance: "https://www.behance.net/jorgetorres46",
   },
   {
     name: "Marlon Castro",
     image: "/assets/branding/partner-3.webp",
-    linkedin: "https://www.linkedin.com/in/marlon-castro",
+    linkedin: "https://www.linkedin.com/in/m-geovany/",
     instagram: "https://www.instagram.com/marlon.castro",
-    github: "https://github.com/marlon-castro",
-    website: "https://marlon.dev",
+    github: "https://github.com/MGeovany",
+    website: "https://mgeovany-dev.vercel.app/",
   },
 ];
 
@@ -49,6 +50,7 @@ export const teamText: Record<"en" | "es" | "ja", TeamTextLocale> = {
     heading: "Meet the Founding team that makes it all happen",
     description:
       "We have spent years working on startups, building out digital experiences and working on tech companies.",
+    badge: "We’re open to collaborations!",
     members: [
       {
         name: memberUnchangedData[0].name,
@@ -83,11 +85,12 @@ export const teamText: Record<"en" | "es" | "ja", TeamTextLocale> = {
     heading: "Conoce al equipo fundador que lo hace posible",
     description:
       "Hemos trabajado en startups, creando experiencias digitales y colaborando con empresas tecnológicas.",
+    badge: "¡Estamos abiertos a colaboraciones!",
     members: [
       {
         name: memberUnchangedData[0].name,
-        role: "Ingeniero de Software & Arquitecto Cloud",
-        bio: "Especialista en sistemas backend y arquitecturas cloud escalables para startups en crecimiento. Experto en diseño de APIs, automatización de infraestructura y soluciones orientadas al rendimiento.",
+        role: "Ingeniero de Software & Arquitecto en la Nube",
+        bio: "Especialista en sistemas backend y arquitecturas cloud escalables para startups en crecimiento.",
         image: memberUnchangedData[0].image,
         linkedin: memberUnchangedData[0].linkedin,
         github: memberUnchangedData[0].github,
@@ -96,7 +99,7 @@ export const teamText: Record<"en" | "es" | "ja", TeamTextLocale> = {
       {
         name: memberUnchangedData[1].name,
         role: "Director Creativo & Diseñador de Producto",
-        bio: "Lidera el diseño en FNDRS, uniendo visión de producto, estrategia UX y narrativa visual para crear experiencias digitales que generan impacto y fortalecen marcas.",
+        bio: "Lidera el diseño en FNDRS, uniendo visión de producto, estrategia y narrativa visual para crear experiencias digitales.",
         image: memberUnchangedData[1].image,
         linkedin: memberUnchangedData[1].linkedin,
         instagram: memberUnchangedData[1].instagram,
@@ -104,8 +107,8 @@ export const teamText: Record<"en" | "es" | "ja", TeamTextLocale> = {
       },
       {
         name: memberUnchangedData[2].name,
-        role: "Ingeniero de Software & Project Manager",
-        bio: "Encabeza la entrega de software en FNDRS, combinando liderazgo operativo con expertise técnico. Con experiencia en el desarrollo de aplicaciones web y móviles escalables.",
+        role: "Ingeniero de Software & Gerente de proyectos",
+        bio: "Encabeza la entrega de software en FNDRS, combinando liderazgo operativo con expertise técnico.",
         image: memberUnchangedData[2].image,
         linkedin: memberUnchangedData[2].linkedin,
         github: memberUnchangedData[2].github,
@@ -117,6 +120,7 @@ export const teamText: Record<"en" | "es" | "ja", TeamTextLocale> = {
     heading: "すべてを実現する創業メンバーを紹介します",
     description:
       "私たちは長年にわたりスタートアップで働き、デジタル体験を構築し、テック企業と協力してきました。",
+    badge: "コラボレーション募集中！",
     members: [
       {
         name: memberUnchangedData[0].name,
