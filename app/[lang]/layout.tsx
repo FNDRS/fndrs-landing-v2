@@ -7,13 +7,14 @@ type Props = {
   params: { lang: string };
 };
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: { lang: string };
-}): Metadata {
+}): Promise<Metadata> {
   const baseUrl = "https://www.thefndrs.com";
-  const langPrefix = params.lang === "es" ? "" : `/${params.lang}`;
+  const lang = (await params).lang ?? "es";
+  const langPrefix = lang === "es" ? "" : `/${lang}`;
 
   return {
     title: "FNDRS - Make things with excellence",

@@ -139,8 +139,8 @@ export default function TeamSection() {
   const isInView = useInViewObserver(ref, { threshold: 0.2 });
   const { language } = useLanguage();
 
-  const t = teamText[language as keyof typeof teamText];
-  const { heading, description, members, badge } = t;
+  const t = teamText[language as keyof typeof teamText] || teamText.en;
+  const { heading, description, members, badge = "" } = t;
 
   return (
     <section className="py-16 px-4 bg-white" ref={ref} id="team">
