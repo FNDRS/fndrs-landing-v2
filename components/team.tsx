@@ -1,156 +1,181 @@
-// components/Team.tsx
+// components/TeamSection.tsx
 
 "use client";
 
 import Image from "next/image";
 import { useRef } from "react";
-import { teamText } from "@/constants/team-translations";
-import { useLanguage } from "@/hooks/use-language";
-import { MotionDiv, MotionH2 } from "./ui/motion-client";
 import { useInViewObserver } from "@/hooks/use-motion-in-view";
+import { MotionDiv } from "@/components/ui/motion-client";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { Linkedin, Instagram, Github, Globe, Palette } from "lucide-react";
+import { useLanguage } from "@/hooks/use-language";
+import { teamText } from "@/constants/team-translations";
+import { BehanceIcon } from "./icons/behance-icon";
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6 },
+    transition: { duration: 0.5 },
   },
+};
+
+type SocialLinks = {
+  linkedin?: string;
+  instagram?: string;
+  github?: string;
+  behance?: string;
+  website?: string;
 };
 
 const TeamMember = ({
   name,
   role,
+  bio,
   image,
-  linkedin,
+  roleColor,
+  socialLinks,
 }: {
   name: string;
   role: string;
+  bio: string;
   image: string;
-  linkedin?: string;
+  roleColor: string;
+  socialLinks: SocialLinks;
 }) => {
   return (
     <MotionDiv
-      className="flex flex-col md:w-1/3 items-center text-center"
+      className="flex flex-col items-center text-center mb-12"
       variants={itemVariants}
     >
-      {/* Contenedor cuadrado y redondo */}
-      <div className="w-64 h-64 rounded-full overflow-hidden mb-4">
+      <div className="w-28 h-28 md:w-32 md:h-32 rounded-full overflow-hidden mb-4">
         <Image
-          src={image || "/assets/misc/placeholder.svg"}
+          src={image}
           alt={name}
-          width={256}
-          height={256}
-          sizes="256px"
-          className="w-full h-full object-cover object-center object-[50%_30%]"
+          width={128}
+          height={128}
+          className="w-full h-full object-cover"
         />
       </div>
 
-      {/* Bloque nombre+rol con altura mínima */}
-      <div className="min-h-[4.5rem]">
-        <h3 className="text-md font-medium">{name}</h3>
-        <p className="text-sm mt-1 text-gray-500">{role}</p>
-      </div>
+      <h3 className="text-lg font-bold text-gray-800">{name}</h3>
+      <p className={`text-sm font-semibold ${roleColor} mt-1`}>{role}</p>
+      <p className="text-sm text-left leading-relaxed text-gray-600 mt-2 max-w-xs">
+        {bio}
+      </p>
 
-      {linkedin && (
-        <Link href={linkedin} className="mt-3 inline-block group">
-          <span className="relative inline-block text-sm font-semibold text-blue-500 transition-colors duration-200 hover:text-blue-500">
-            Learn More
-            <span className="absolute left-0 -bottom-1 block h-[4px] w-full bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
-          </span>
-          <ArrowUpRight
-            className="ml-1 h-4 w-4 inline-block"
-            color="#3b82f6"
-            strokeWidth={3}
-          />
-        </Link>
-      )}
+      <div className="flex space-x-3 mt-3">
+        {socialLinks.linkedin && (
+          <Link
+            href={socialLinks.linkedin}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <Linkedin className="h-5 w-5" />
+            <span className="sr-only">LinkedIn</span>
+          </Link>
+        )}
+        {socialLinks.instagram && (
+          <Link
+            href={socialLinks.instagram}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <Instagram className="h-5 w-5" />
+            <span className="sr-only">Instagram</span>
+          </Link>
+        )}
+        {socialLinks.github && (
+          <Link
+            href={socialLinks.github}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <Github className="h-5 w-5" />
+            <span className="sr-only">GitHub</span>
+          </Link>
+        )}
+        {socialLinks.behance && (
+          <Link
+            href={socialLinks.behance}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <BehanceIcon className="h-5 w-5" />
+            <span className="sr-only">Behance</span>
+          </Link>
+        )}
+        {socialLinks.website && (
+          <Link
+            href={socialLinks.website}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <Globe className="h-5 w-5" />
+            <span className="sr-only">Website</span>
+          </Link>
+        )}
+      </div>
     </MotionDiv>
   );
 };
 
-const Team = () => {
-  const ref = useRef(null);
-  const isInView = useInViewObserver(ref, { threshold: 0.3 });
-
+export default function TeamSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInViewObserver(ref, { threshold: 0.2 });
   const { language } = useLanguage();
+
   const t = teamText[language as keyof typeof teamText];
+  const { heading, description, members } = t;
 
   return (
-    <section id="team" className="px-4 py-20 bg-gray-50" ref={ref}>
+    <section className="py-16 px-4 bg-white" ref={ref} id="team">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-20">
-          <MotionH2
-            className="text-4xl font-bold md:text-6xl md:font-medium max-w-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
-            {language === "es" ? (
-              <>
-                Conoce al equipo{" "}
-                <span className="font-bold text-[#333]">Fundador</span> que lo
-                hace posible
-              </>
-            ) : (
-              <>
-                Meet the <span className="font-bold text-[#333]">Founding</span>{" "}
-                team that makes it all happen
-              </>
-            )}
-          </MotionH2>
-          <MotionDiv
-            className="flex items-center justify-end"
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <p className="text-md text-gray-500 max-w-sm leading-loose">
-              {t.description}
-            </p>
-          </MotionDiv>
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12">
+          <div className="mb-8 md:mb-0">
+            <div className="inline-block px-4 py-1 bg-indigo-100 text-blue-700 rounded-full text-sm font-medium mb-4">
+              We're open to collaborations!
+            </div>
+
+            <h2 className="text-4xl max-w-[48rem] md:text-5xl font-bold text-gray-900 mb-4">
+              {heading}
+            </h2>
+
+            <p className="text-gray-600 max-w-2xl">{description}</p>
+          </div>
         </div>
 
         <MotionDiv
-          className="flex flex-col w-full justify-center items-center md:flex-row gap-8 md:gap-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          <MotionDiv
-            className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 max-w-5xl"
-            variants={containerVariants}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {t.members.map((member, index) => (
-              <TeamMember
-                key={index}
-                name={member.name}
-                role={member.role}
-                image={member.image ?? "/assets/misc/placeholder.svg"}
-                linkedin={member.linkedin}
-              />
-            ))}
-          </MotionDiv>
+          {members.map((member, idx) => (
+            <TeamMember
+              key={idx}
+              name={member.name}
+              role={member.role}
+              bio={member.bio}
+              image={member.image}
+              roleColor="text-blue-600"
+              socialLinks={{
+                linkedin: member?.linkedin,
+                instagram: member?.instagram,
+                github: member?.github,
+                behance: member?.behance,
+                website: member?.website,
+              }}
+            />
+          ))}
         </MotionDiv>
       </div>
     </section>
   );
-};
-
-export default Team;
+}
