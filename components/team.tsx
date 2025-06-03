@@ -42,25 +42,30 @@ const TeamMember = ({
   linkedin?: string;
 }) => {
   return (
-    <MotionDiv className="flex flex-col md:w-1/3" variants={itemVariants}>
-      <div className="rounded-2xl overflow-hidden mb-3">
+    <MotionDiv
+      className="flex flex-col md:w-1/3 items-center text-center"
+      variants={itemVariants}
+    >
+      {/* Contenedor cuadrado y redondo */}
+      <div className="w-64 h-64 rounded-full overflow-hidden mb-4">
         <Image
           src={image || "/assets/misc/placeholder.svg"}
           alt={name}
           width={256}
           height={256}
           sizes="256px"
-          className="w-full h-64 object-cover aspect-square grayscale"
+          className="w-full h-full object-cover object-center object-[50%_30%]"
         />
       </div>
 
+      {/* Bloque nombre+rol con altura mínima */}
       <div className="min-h-[4.5rem]">
         <h3 className="text-md font-medium">{name}</h3>
-        <p className="text-sm mb-2 text-gray-500">{role}</p>
+        <p className="text-sm mt-1 text-gray-500">{role}</p>
       </div>
 
       {linkedin && (
-        <Link href={linkedin} className="group inline-block w-fit">
+        <Link href={linkedin} className="mt-3 inline-block group">
           <span className="relative inline-block text-sm font-semibold text-blue-500 transition-colors duration-200 hover:text-blue-500">
             Learn More
             <span className="absolute left-0 -bottom-1 block h-[4px] w-full bg-blue-500 transform scale-x-0 origin-left transition-transform duration-300 ease-out group-hover:scale-x-100" />
