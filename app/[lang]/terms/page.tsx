@@ -26,19 +26,23 @@ export default function Terms({ params }: Props) {
 
   return (
     <MotionDiv
-      className="max-w-3xl mx-auto px-4 py-32 text-black space-y-6"
+      className="max-w-2xl mx-auto px-4 py-32 text-black space-y-6"
       initial="hidden"
       animate="visible"
       variants={fadeVariants}
     >
-      <MotionH2 className="text-2xl font-light mb-4">{t.title}</MotionH2>
-      <MotionP className="text-sm text-gray-500 mb-4">{t.intro}</MotionP>
+      <MotionH2 className="text-2xl font-normal mb-4">{t.title}</MotionH2>
+      <MotionP className="text-sm text-gray-900/70 mb-4 leading-loose">
+        {t.intro}
+      </MotionP>
 
       <MotionSection className="space-y-6">
         {t.sections.map((section, idx) => (
           <MotionDiv key={idx}>
-            <h3 className="text-lg font-light mb-2">{section.title}</h3>
-            <p className="text-sm text-gray-500">{section.content}</p>
+            <h3 className="text-lg font-normal mb-2">{section.title}</h3>
+            <p className="text-sm text-gray-900/70 leading-loose">
+              {section.content}
+            </p>
           </MotionDiv>
         ))}
       </MotionSection>
