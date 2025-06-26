@@ -31,6 +31,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    domains: ["cdn.sanity.io"],
     formats: ["image/webp", "image/avif"],
     deviceSizes: [320, 420, 640, 768],
     imageSizes: [240, 384, 512],
