@@ -4,30 +4,15 @@ import type { Metadata } from "next/types";
 
 type Props = {
   children: React.ReactNode;
-  params: { lang: string };
 };
 
-export async function generateMetadata({
-  params,
-}: {
+export async function generateMetadata({}: {
   params: { lang: string };
 }): Promise<Metadata> {
-  const baseUrl = "https://www.thefndrs.com";
-  const lang = (await params).lang ?? "es";
-  const langPrefix = lang === "es" ? "" : `/${lang}`;
-
   return {
-    title: "FNDRS - Make things with excellence",
+    title: "FNDRS - Blogs",
     description:
       "FNDRS is a creative agency that transforms ideas into innovative solutions.",
-    alternates: {
-      canonical: `${baseUrl}${langPrefix}`,
-      languages: {
-        es: `${baseUrl}/`,
-        en: `${baseUrl}/en`,
-        ja: `${baseUrl}/ja`,
-      },
-    },
   };
 }
 
