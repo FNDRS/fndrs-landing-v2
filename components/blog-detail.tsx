@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { useLanguage } from "@/hooks/use-language";
 import { blogText } from "@/constants/blog-translations";
+import { MotionDiv } from "./ui/motion-client";
 
 const portableTextComponents = {
   types: {
@@ -120,86 +121,89 @@ export default function PostDetailClient({ post }: { post: Post }) {
       day: "numeric",
     });
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-white mt-32">
-      <article className="container mx-auto px-4 pb-20 max-w-2xl">
-        {/* Article Header */}
+    <MotionDiv
+      className="min-h-screen bg-white mt-32"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+    >
+      <MotionDiv
+        className="container mx-auto px-4 pb-20 max-w-2xl"
+        variants={itemVariants}
+      >
         <header className="text-center mb-12">
-          <div className="mb-6">
+          <MotionDiv variants={itemVariants}>
             <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
               {t.articleLabel}
             </span>
-          </div>
+          </MotionDiv>
 
-          <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto">
-            {post.title}
-          </h1>
+          <MotionDiv variants={itemVariants}>
+            <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto my-4">
+              {post.title}
+            </h1>
+          </MotionDiv>
 
           {post.excerpt && (
-            <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
-              {post.excerpt}
-            </p>
+            <MotionDiv variants={itemVariants}>
+              <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
+                {post.excerpt}
+              </p>
+            </MotionDiv>
           )}
 
-          {/* Meta Information */}
-          <div
-            className="
-  flex flex-col sm:flex-row 
-  justify-center items-center 
-  gap-6 my-12 text-sm text-gray-900
-"
+          <MotionDiv
+            className="flex flex-col sm:flex-row justify-center items-center gap-6 my-12 text-sm text-gray-900"
+            variants={containerVariants}
           >
-            <div
-              className="
-    flex flex-col items-center gap-2 
-    w-full sm:w-auto 
-    px-4 sm:px-10 
-    border-gray-200
-    sm:border-r sm:last:border-r-0
-  "
-            >
-              <span className="uppercase tracking-wide text-xs">
-                {t.dateLabel}
-              </span>
-              <span className="font-light">{formatDate(post.publishedAt)}</span>
-            </div>
-
-            <div
-              className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 
-    border-gray-200
-    sm:border-r sm:last:border-r-0
-  "
-            >
-              <span className="uppercase tracking-wide text-xs">
-                {t.authorLabel}
-              </span>
-              <span className="font-light">{post.author}</span>
-            </div>
-
-            <div
-              className="
-    flex flex-col items-center gap-2 
-    w-full sm:w-auto 
-    px-4 sm:px-10 
-    border-gray-200
-    sm:last:border-r-0
-  "
-            >
-              <span className="uppercase tracking-wide text-xs">
-                {t.readLabel}
-              </span>
-              <span className="font-light">
-                {post.readTime || t.defaultReadTime} {t.readUnit}
-              </span>
-            </div>
-          </div>
+            {[
+              { label: t.dateLabel, value: formatDate(post.publishedAt) },
+              { label: t.authorLabel, value: post.author },
+              {
+                label: t.readLabel,
+                value: `${post.readTime || t.defaultReadTime} ${t.readUnit}`,
+              },
+            ].map((item, idx) => (
+              <MotionDiv
+                key={idx}
+                className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 border-gray-200 sm:border-r sm:last:border-r-0"
+                variants={itemVariants}
+              >
+                <span className="uppercase tracking-wide text-xs">
+                  {item.label}
+                </span>
+                <span className="font-light">{item.value}</span>
+              </MotionDiv>
+            ))}
+          </MotionDiv>
         </header>
 
-        {/* Article Content */}
-        <div className="prose prose-lg prose-gray max-w-none">
+        <MotionDiv
+          className="prose prose-lg prose-gray max-w-none"
+          variants={containerVariants}
+        >
           <PortableText value={post.body} components={portableTextComponents} />
-        </div>
-      </article>
-    </div>
+        </MotionDiv>
+      </MotionDiv>
+    </MotionDiv>
   );
 }

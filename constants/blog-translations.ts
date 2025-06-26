@@ -40,7 +40,7 @@ export const blogText = {
     },
   },
   es: {
-    sectionTitle: "Blog | FNDRS",
+    sectionTitle: "Blog",
     description:
       "Descubre artículos, ideas y novedades de FNDRS — la agencia creativa que transforma ideas en soluciones innovadoras.",
     meta: {
