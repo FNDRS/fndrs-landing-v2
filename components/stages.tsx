@@ -32,12 +32,22 @@ const Stages = () => {
       transition: { duration: 0.5 },
     },
   };
-
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
   return (
     <section id="process" className="md:max-w-6xl mx-auto px-4 py-20" ref={ref}>
-      <div className="mb-8">
+      <MotionDiv
+        className="mb-8"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        variants={fadeIn}
+      >
         <h2 className="uppercase text-sm tracking-wider text-gray-500 mb-4">
-          PROCESS
+          {t.sectionTitle}
         </h2>
         <MotionP
           className="text-2xl md:text-3xl lg:text-4xl font-light leading-snug mb-8"
@@ -65,7 +75,7 @@ const Stages = () => {
             )
           )}
         </MotionP>
-      </div>
+      </MotionDiv>
 
       <MotionDiv
         className="border-t border-gray-200"

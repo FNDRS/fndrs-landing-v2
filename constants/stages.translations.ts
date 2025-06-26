@@ -1,5 +1,6 @@
 export const stagesText = {
   en: {
+    sectionTitle: "PROCESS",
     intro:
       "We prioritize close collaboration with you at every step, ensuring personalized attention to your preferences, eliminating any worries about lack of involvement or disappointments.",
     stages: [
@@ -46,6 +47,7 @@ export const stagesText = {
     },
   },
   es: {
+    sectionTitle: "PROCESO",
     intro:
       "Priorizamos una colaboración cercana contigo en cada etapa, asegurando atención personalizada a tus preferencias y eliminando cualquier preocupación por falta de involucramiento o decepciones.",
     stages: [
@@ -92,6 +94,7 @@ export const stagesText = {
     },
   },
   ja: {
+    sectionTitle: "プロセス",
     intro:
       "私たちはすべてのステップであなたとの密接な協力を優先し、ご希望に合わせたパーソナライズされた対応を行い、関与の欠如や失望の不安を解消します。",
     stages: [

@@ -1,20 +1,17 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import HomeSection from "@/components/home";
-
-import Team from "@/components/team";
 import Services from "@/components/services";
-
-const Stages = dynamic(() => import("@/components/stages"), { ssr: false });
-const WhyUs = dynamic(() => import("@/components/why-us"), { ssr: false });
+import TeamSection from "@/components/team";
+import WhyUs from "@/components/why-us";
+import Stages from "@/components/stages";
 
 export default function Home() {
   return (
     <div>
       <HomeSection />
       <WhyUs />
-      <Team />
+      <TeamSection />
       <Stages />
       <Services />
     </div>
