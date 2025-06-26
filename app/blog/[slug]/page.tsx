@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 import { client } from "@/sanity/lib/client";
-import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 export const revalidate = 60;
 
@@ -12,10 +12,18 @@ const query = groq`
     title,
     publishedAt,
     "author": author->name,
-    coverImage,
     body,
     excerpt,
-    "readTime": readTime
+    "readTime": readTime,
+      mainImage
+    {
+      asset->
+      {
+        _id,
+        url
+      },
+      alt
+  },
   }
 `;
 
@@ -53,10 +61,13 @@ const portableTextComponents = {
       <h3 className="text-xl font-bold mt-6 mb-3 text-gray-900">{children}</h3>
     ),
     normal: ({ children }: any) => (
-      <p className="mb-6 leading-relaxed text-gray-700 text-lg">{children}</p>
+      <p className="leading-loose tracking-normal font-light text-lg mb-4 font-serif text-[#242424e2] break-words">
+        {children}
+      </p>
     ),
+
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-gray-300 pl-6 my-8 italic text-gray-600 text-lg">
+      <blockquote className="border-l-2 border-gray-300 pl-6 my-8 font-light font-serif italic text-gray-600 text-lg">
         {children}
       </blockquote>
     ),
@@ -72,14 +83,17 @@ const portableTextComponents = {
         {children}
       </a>
     ),
+
     strong: ({ children }: any) => (
       <strong className="font-bold text-gray-900">{children}</strong>
     ),
-    em: ({ children }: any) => <em className="italic">{children}</em>,
+    em: ({ children }: any) => (
+      <em className="italic font-extralight">{children}</em>
+    ),
   },
   list: {
     bullet: ({ children }: any) => (
-      <ul className="list-disc list-inside mb-6 space-y-2 text-gray-700">
+      <ul className="list-disc font-serif text-lg list-inside mb-6 space-y-2 text-gray-700">
         {children}
       </ul>
     ),
@@ -87,6 +101,24 @@ const portableTextComponents = {
       <ol className="list-decimal list-inside mb-6 space-y-2 text-gray-700">
         {children}
       </ol>
+    ),
+  },
+  listItem: {
+    bullet: ({ children }: any) => (
+      <li
+        className="pl-2"
+        style={{ textIndent: "-1.5em", paddingLeft: "1.5em" }}
+      >
+        <span className="align-top">{children}</span>
+      </li>
+    ),
+    number: ({ children }: any) => (
+      <li
+        className="pl-2"
+        style={{ textIndent: "-1.5em", paddingLeft: "1.5em" }}
+      >
+        <span className="align-top">{children}</span>
+      </li>
     ),
   },
 };
@@ -143,64 +175,55 @@ export default async function PostPage({
         {/* Article Header */}
         <header className="text-center mb-12">
           <div className="mb-6">
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+            <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
               ARTICLE
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight max-w-4xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-semibold text-left text-gray-900 mb-6 leading-[1.1] max-w-4xl mx-auto">
             {post.title}
           </h1>
 
-          {post.excerpt && (
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-              {post.excerpt}
+          {post.summary && (
+            <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
+              {post.summary}
             </p>
           )}
 
           {/* Meta Information */}
-          <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-gray-500 mb-12">
-            <div className="flex items-center">
-              <Calendar className="w-4 h-4 mr-2" />
-              <span>DATE</span>
-            </div>
-            <div className="flex items-center">
-              <span className="font-medium">
-                {formatDate(post.publishedAt)}
-              </span>
-            </div>
-
-            <div className="flex items-center">
-              <User className="w-4 h-4 mr-2" />
-              <span>AUTHOR</span>
-            </div>
-            <div className="flex items-center">
-              <span className="font-medium">{post.author || "FNDRS Team"}</span>
+          <div className="flex my-20 flex-wrap justify-center items-center gap-6 text-sm text-gray-900 mb-12">
+            <div className="flex flex-col items-center gap-2 border-r-[1px] px-10 border-gray-200">
+              <div className="flex items-center">
+                <span>DATE</span>
+              </div>
+              <div className="flex items-center">
+                <span className="font-light">
+                  {formatDate(post.publishedAt)}
+                </span>
+              </div>
             </div>
 
-            <div className="flex items-center">
-              <Clock className="w-4 h-4 mr-2" />
-              <span>READ</span>
+            <div className="flex flex-col items-center gap-2 px-10 border-gray-200">
+              <div className="flex items-center">
+                <span>AUTHOR</span>
+              </div>
+              <div className="flex items-center">
+                <span className="font-light">
+                  {post.author || "FNDRS Team"}
+                </span>
+              </div>
             </div>
-            <div className="flex items-center">
-              <span className="font-medium">{post.readTime || 5} Min</span>
+
+            <div className="flex flex-col items-center gap-2 border-l-[1px] px-10 border-gray-200">
+              <div className="flex items-center">
+                <span>READ</span>
+              </div>
+              <div className="flex items-center">
+                <span className="font-light">{post.readTime || 5} Min</span>
+              </div>
             </div>
           </div>
         </header>
-
-        {/* Featured Image */}
-        <div className="mb-12">
-          <div className="relative aspect-video rounded-2xl overflow-hidden bg-gradient-to-br from-blue-400 to-teal-400">
-            <Image
-              src={post.coverImage?.asset?.url || fallback}
-              alt={post.title}
-              fill
-              sizes="(min-width: 1024px) 800px, 100vw"
-              className="object-cover"
-              priority
-            />
-          </div>
-        </div>
 
         {/* Article Content */}
         <div className="prose prose-lg prose-gray max-w-none">
@@ -211,7 +234,6 @@ export default async function PostPage({
   );
 }
 
-// Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: {
@@ -221,12 +243,12 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Post Not Found | FNDRS",
+      title: "FNDRS | Post Not Found",
     };
   }
 
   return {
-    title: `${post.title} | FNDRS Blog`,
+    title: `FNDRS Blog | ${post.title}`,
     description: post.excerpt || `Read ${post.title} on the FNDRS blog`,
     openGraph: {
       title: post.title,

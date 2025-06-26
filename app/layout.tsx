@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Metadata from "next";
 import { Poppins } from "next/font/google";
 import Provider from "./provider";
 import SEO from "@/next-seo.config";
@@ -11,7 +11,7 @@ const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-poppins",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {

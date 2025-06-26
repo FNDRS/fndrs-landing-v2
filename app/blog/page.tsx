@@ -74,7 +74,7 @@ export default async function BlogPage() {
                             {post.categories.map((cat: any) => (
                               <span
                                 key={cat.slug?.current || cat.title}
-                                className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-thin uppercase text-gray-800"
+                                className="bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-light uppercase text-gray-800"
                               >
                                 {cat.title}
                               </span>
