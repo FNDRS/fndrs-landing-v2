@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { urlFor } from "@/sanity/lib/image";
 import { useLanguage } from "@/hooks/use-language";
 import { blogText } from "@/constants/blog-translations";
@@ -24,7 +23,6 @@ interface Post {
 export default function BlogList({ posts }: { posts: Post[] }) {
   const { language } = useLanguage();
   const t = blogText[language as keyof typeof blogText] || blogText.en;
-
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
@@ -43,7 +41,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
               return (
                 <Link
                   key={post._id}
-                  href={`/blog/${post.slug.current}`}
+                  href={`/${language}/blog/${post.slug.current}`}
                   className="group block"
                 >
                   <article className="bg-white rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 h-full border-2 border-slate-100/90">
