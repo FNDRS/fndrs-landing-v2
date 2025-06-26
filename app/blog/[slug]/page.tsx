@@ -171,7 +171,7 @@ export default async function PostPage({
         </Link>
       </div>
 
-      <article className="container mx-auto px-4 pb-20 max-w-4xl">
+      <article className="container mx-auto px-4 pb-20 max-w-2xl">
         {/* Article Header */}
         <header className="text-center mb-12">
           <div className="mb-6">
@@ -180,7 +180,7 @@ export default async function PostPage({
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-semibold text-left text-gray-900 mb-6 leading-[1.1] max-w-4xl mx-auto">
+          <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto">
             {post.title}
           </h1>
 
@@ -191,36 +191,50 @@ export default async function PostPage({
           )}
 
           {/* Meta Information */}
-          <div className="flex my-20 flex-wrap justify-center items-center gap-6 text-sm text-gray-900 mb-12">
-            <div className="flex flex-col items-center gap-2 border-r-[1px] px-10 border-gray-200">
-              <div className="flex items-center">
-                <span>DATE</span>
-              </div>
-              <div className="flex items-center">
-                <span className="font-light">
-                  {formatDate(post.publishedAt)}
-                </span>
-              </div>
+          <div
+            className="
+  flex flex-col sm:flex-row 
+  justify-center items-center 
+  gap-6 my-12 text-sm text-gray-900
+"
+          >
+            {/* DATE */}
+            <div
+              className="
+    flex flex-col items-center gap-2 
+    w-full sm:w-auto 
+    px-4 sm:px-10 
+    border-gray-200
+    sm:border-r sm:last:border-r-0
+  "
+            >
+              <span className="uppercase tracking-wide text-xs">Date</span>
+              <span className="font-light">{formatDate(post.publishedAt)}</span>
             </div>
 
-            <div className="flex flex-col items-center gap-2 px-10 border-gray-200">
-              <div className="flex items-center">
-                <span>AUTHOR</span>
-              </div>
-              <div className="flex items-center">
-                <span className="font-light">
-                  {post.author || "FNDRS Team"}
-                </span>
-              </div>
+            {/* AUTHOR */}
+            <div
+              className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 
+    border-gray-200
+    sm:border-r sm:last:border-r-0
+  "
+            >
+              <span className="uppercase tracking-wide text-xs">Author</span>
+              <span className="font-light">{post.author || "FNDRS Team"}</span>
             </div>
 
-            <div className="flex flex-col items-center gap-2 border-l-[1px] px-10 border-gray-200">
-              <div className="flex items-center">
-                <span>READ</span>
-              </div>
-              <div className="flex items-center">
-                <span className="font-light">{post.readTime || 5} Min</span>
-              </div>
+            {/* READ */}
+            <div
+              className="
+    flex flex-col items-center gap-2 
+    w-full sm:w-auto 
+    px-4 sm:px-10 
+    border-gray-200
+    sm:last:border-r-0
+  "
+            >
+              <span className="uppercase tracking-wide text-xs">Read</span>
+              <span className="font-light">{post.readTime || 5} Min</span>
             </div>
           </div>
         </header>
