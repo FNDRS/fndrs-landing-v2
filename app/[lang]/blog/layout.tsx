@@ -1,23 +1,32 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import { blogText } from "@/constants/blog-translations";
 import { Metadata } from "next";
 
-type Props = { children: React.ReactNode };
+type Props = {
+  children: ReactNode;
+};
 
 export function generateMetadata(): Metadata {
-  const { meta } = blogText.en;
+  const meta = blogText.en.meta;
   return {
     title: meta.title,
     description: meta.description,
     openGraph: {
       title: meta.title,
       description: meta.description,
-      url: "https://fndrs.com/blog",
+      url: meta.openGraph.url,
+      siteName: meta.openGraph.siteName,
+      images: meta.openGraph.images,
     },
     twitter: {
-      card: "summary_large_image",
+      card: meta.twitter.card as
+        | "summary_large_image"
+        | "summary"
+        | "player"
+        | "app",
       title: meta.title,
       description: meta.description,
+      images: meta.twitter.images,
     },
   };
 }
