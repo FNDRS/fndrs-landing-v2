@@ -121,16 +121,16 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                               height={24}
                               className="rounded-full object-cover"
                               src={
-                                post.author.image
-                                  ? urlFor(post.author.image)
+                                post?.author?.image
+                                  ? urlFor(post?.author?.image)
                                       .width(64)
                                       .height(64)
                                       .url()
                                   : "/avatar-placeholder.png"
                               }
-                              alt={post.author.name || t.defaultAuthor}
+                              alt={post?.author?.name || t.defaultAuthor}
                             />
-                            <span>{post.author.name || t.defaultAuthor}</span>
+                            <span>{post?.author?.name || t.defaultAuthor}</span>
                           </div>
                           <span>
                             {post.readTime || t.defaultReadTime} {t.readUnit}

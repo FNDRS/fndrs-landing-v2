@@ -177,7 +177,7 @@ export default function PostDetailClient({ post }: { post: Post }) {
           >
             {[
               { label: t.dateLabel, value: formatDate(post.publishedAt) },
-              { label: t.authorLabel, value: post.author },
+              { label: t.authorLabel, value: post?.author },
               {
                 label: t.readLabel,
                 value: `${post.readTime || t.defaultReadTime} ${t.readUnit}`,

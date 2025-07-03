@@ -1,11 +1,11 @@
-import Metadata from "next";
 import { Poppins } from "next/font/google";
 import Provider from "./provider";
 import SEO from "@/next-seo.config";
-
+import { Analytics } from "@vercel/analytics/next";
 import "@/styles/critical.css";
 import ClientStyleLoader from "@/components/client-style-loader";
 import SchemaMarkup from "@/components/schema-markup";
+import { Metadata } from "next";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -47,6 +47,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <ClientStyleLoader />
         <Provider>{children}</Provider>
+        <Analytics />
       </body>
     </html>
   );
