@@ -8,6 +8,9 @@ import { MotionDiv } from "./ui/motion-client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { calculateReadTime } from "@/lib/utils";
+import ReadingProgress from "./reading-progress";
+import ShareButtons from "./share-buttons";
+import BlogStructuredData from "./blog-structured-data";
 
 const portableTextComponents = {
   types: {
@@ -111,16 +114,36 @@ interface Post {
   excerpt?: string;
   readTime?: number;
   mainImage?: { asset: { url: string }; alt?: string };
+  slug?: { current: string };
 }
 
-export default function PostDetailClient({ post }: { post: Post }) {
+interface BlogDetailProps {
+  post: Post;
+  slug: string;
+  language: string;
+}
+
+export default function PostDetailClient({
+  post,
+  slug,
+  language: langProp,
+}: BlogDetailProps) {
   const { language } = useLanguage();
-  const t = blogText[language as keyof typeof blogText] || blogText.en;
+  const currentLang = langProp || language;
+  const t = blogText[currentLang as keyof typeof blogText] || blogText.en;
 
   // Calculate read time based on post content
   const calculatedReadTime = post.body
     ? calculateReadTime(post.body)
     : post.readTime || t.defaultReadTime;
+
+  // Construct the full URL for sharing
+  const baseUrl =
+    typeof window !== "undefined"
+      ? `${window.location.protocol}//${window.location.host}`
+      : "https://www.thefndrs.com";
+  const langPrefix = currentLang === "es" ? "" : `/${currentLang}`;
+  const fullUrl = `${baseUrl}${langPrefix}/blog/${slug}`;
 
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString(language, {
@@ -147,80 +170,106 @@ export default function PostDetailClient({ post }: { post: Post }) {
   };
 
   return (
-    <MotionDiv
-      className="min-h-screen bg-white mt-32"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={containerVariants}
-    >
+    <>
+      {/* Structured Data for SEO */}
+      <BlogStructuredData
+        post={post}
+        slug={slug}
+        language={currentLang}
+        baseUrl={baseUrl}
+      />
+
+      {/* Reading Progress Bar */}
+      <ReadingProgress target=".prose" />
+
       <MotionDiv
-        className="container mx-auto px-4 pb-20 max-w-2xl"
-        variants={itemVariants}
+        className="min-h-screen bg-white mt-32"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
       >
-        <header className="text-center mb-12">
-          <MotionDiv variants={itemVariants} className="my-4">
-            <Link
-              href={`/${language}/blog`}
-              className="flex items-center justify-start text-gray-900 hover:text-gray-700 transition-colors"
-              aria-label={t.backLink}
-            >
-              <ArrowLeft className="hover:-translate-x-1 duration-300" />
-            </Link>
-          </MotionDiv>
-          <MotionDiv variants={itemVariants}>
-            <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
-              {t.articleLabel}
-            </span>
-          </MotionDiv>
-
-          <MotionDiv variants={itemVariants}>
-            <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto my-4">
-              {post.title}
-            </h1>
-          </MotionDiv>
-
-          {post.excerpt && (
-            <MotionDiv variants={itemVariants}>
-              <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
-                {post.excerpt}
-              </p>
-            </MotionDiv>
-          )}
-
-          <MotionDiv
-            className="flex flex-col sm:flex-row justify-center items-center gap-6 my-12 text-sm text-gray-900"
-            variants={containerVariants}
-          >
-            {[
-              { label: t.dateLabel, value: formatDate(post.publishedAt) },
-              { label: t.authorLabel, value: post?.author },
-              {
-                label: t.readLabel,
-                value: `${calculatedReadTime} ${t.readUnit}`,
-              },
-            ].map((item, idx) => (
-              <MotionDiv
-                key={idx}
-                className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 border-gray-200 sm:border-r sm:last:border-r-0"
-                variants={itemVariants}
-              >
-                <span className="uppercase tracking-wide text-xs">
-                  {item.label}
-                </span>
-                <span className="font-light">{item.value}</span>
-              </MotionDiv>
-            ))}
-          </MotionDiv>
-        </header>
-
         <MotionDiv
-          className="prose prose-lg prose-gray max-w-none"
-          variants={containerVariants}
+          className="container mx-auto px-4 pb-20 max-w-2xl"
+          variants={itemVariants}
         >
-          <PortableText value={post.body} components={portableTextComponents} />
+          <header className="text-center mb-12">
+            <MotionDiv variants={itemVariants} className="my-4">
+              <Link
+                href={`/${language}/blog`}
+                className="flex items-center justify-start text-gray-900 hover:text-gray-700 transition-colors"
+                aria-label={t.backLink}
+              >
+                <ArrowLeft className="hover:-translate-x-1 duration-300" />
+              </Link>
+            </MotionDiv>
+            <MotionDiv variants={itemVariants}>
+              <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
+                {t.articleLabel}
+              </span>
+            </MotionDiv>
+
+            <MotionDiv variants={itemVariants}>
+              <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto my-4">
+                {post.title}
+              </h1>
+            </MotionDiv>
+
+            {post.excerpt && (
+              <MotionDiv variants={itemVariants}>
+                <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
+                  {post.excerpt}
+                </p>
+              </MotionDiv>
+            )}
+
+            <MotionDiv
+              className="flex flex-col sm:flex-row justify-center items-center gap-6 my-12 text-sm text-gray-900"
+              variants={containerVariants}
+            >
+              {[
+                { label: t.dateLabel, value: formatDate(post.publishedAt) },
+                { label: t.authorLabel, value: post?.author },
+                {
+                  label: t.readLabel,
+                  value: `${calculatedReadTime} ${t.readUnit}`,
+                },
+              ].map((item, idx) => (
+                <MotionDiv
+                  key={idx}
+                  className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 border-gray-200 sm:border-r sm:last:border-r-0"
+                  variants={itemVariants}
+                >
+                  <span className="uppercase tracking-wide text-xs">
+                    {item.label}
+                  </span>
+                  <span className="font-light">{item.value}</span>
+                </MotionDiv>
+              ))}
+            </MotionDiv>
+          </header>
+
+          <div className="relative">
+            {/* Share Buttons - Inline */}
+            <ShareButtons
+              url={fullUrl}
+              title={post.title}
+              description={post.excerpt || ""}
+              position="inline"
+            />
+
+            <MotionDiv
+              className="prose prose-lg prose-gray max-w-none"
+              variants={containerVariants}
+            >
+              <PortableText
+                value={post.body}
+                components={portableTextComponents}
+              />
+            </MotionDiv>
+          </div>
         </MotionDiv>
       </MotionDiv>
-    </MotionDiv>
+    </>
   );
 }
