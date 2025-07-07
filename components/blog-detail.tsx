@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useLanguage } from "@/hooks/use-language";
 import { blogText } from "@/constants/blog-translations";
 import { MotionDiv } from "./ui/motion-client";
+import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 
 const portableTextComponents = {
   types: {
@@ -151,6 +153,15 @@ export default function PostDetailClient({ post }: { post: Post }) {
         variants={itemVariants}
       >
         <header className="text-center mb-12">
+          <MotionDiv variants={itemVariants} className="my-4">
+            <Link
+              href={`/${language}/blog`}
+              className="flex items-center justify-start text-gray-900 hover:text-gray-700 transition-colors"
+              aria-label={t.backLink}
+            >
+              <ArrowLeft className="hover:-translate-x-1 duration-300" />
+            </Link>
+          </MotionDiv>
           <MotionDiv variants={itemVariants}>
             <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
               {t.articleLabel}
