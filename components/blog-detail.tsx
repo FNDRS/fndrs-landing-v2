@@ -7,6 +7,7 @@ import { blogText } from "@/constants/blog-translations";
 import { MotionDiv } from "./ui/motion-client";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
+import { calculateReadTime } from "@/lib/utils";
 
 const portableTextComponents = {
   types: {
@@ -116,6 +117,11 @@ export default function PostDetailClient({ post }: { post: Post }) {
   const { language } = useLanguage();
   const t = blogText[language as keyof typeof blogText] || blogText.en;
 
+  // Calculate read time based on post content
+  const calculatedReadTime = post.body
+    ? calculateReadTime(post.body)
+    : post.readTime || t.defaultReadTime;
+
   const formatDate = (dateString: string) =>
     new Date(dateString).toLocaleDateString(language, {
       year: "numeric",
@@ -191,7 +197,7 @@ export default function PostDetailClient({ post }: { post: Post }) {
               { label: t.authorLabel, value: post?.author },
               {
                 label: t.readLabel,
-                value: `${post.readTime || t.defaultReadTime} ${t.readUnit}`,
+                value: `${calculatedReadTime} ${t.readUnit}`,
               },
             ].map((item, idx) => (
               <MotionDiv

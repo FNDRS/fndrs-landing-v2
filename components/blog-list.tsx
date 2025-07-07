@@ -7,6 +7,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { useLanguage } from "@/hooks/use-language";
 import { blogText } from "@/constants/blog-translations";
 import { MotionDiv } from "@/components/ui/motion-client";
+import { calculateReadTime } from "@/lib/utils";
 
 interface Post {
   _id: string;
@@ -19,6 +20,7 @@ interface Post {
   summary?: string;
   author: { name?: string; image?: any };
   readTime?: number;
+  body?: any[];
 }
 
 export default function BlogList({ posts }: { posts: Post[] }) {
@@ -71,6 +73,10 @@ export default function BlogList({ posts }: { posts: Post[] }) {
           >
             {posts.map((post) => {
               const img = post.mainImage?.asset.url;
+              // Calculate read time based on post content
+              const calculatedReadTime = post.body
+                ? calculateReadTime(post.body)
+                : post.readTime || t.defaultReadTime;
               return (
                 <MotionDiv key={post._id} variants={itemVariants}>
                   <Link
@@ -82,7 +88,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                         <Image
                           alt={post.mainImage?.alt || post.title}
                           fill
-                          src={img || ""}
+                          src={img || "/placeholder.svg"}
                           sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
                           className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
@@ -133,7 +139,7 @@ export default function BlogList({ posts }: { posts: Post[] }) {
                             <span>{post?.author?.name || t.defaultAuthor}</span>
                           </div>
                           <span>
-                            {post.readTime || t.defaultReadTime} {t.readUnit}
+                            {calculatedReadTime} {t.readUnit}
                           </span>
                         </div>
                       </div>

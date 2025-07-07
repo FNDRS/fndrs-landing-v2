@@ -5,7 +5,7 @@ import { groq } from "next-sanity";
 export const revalidate = 60;
 
 const query = groq`
-*[_type=='post' && defined(slug.current)] 
+*[_type=='post' && defined(slug.current)]
 | order(publishedAt desc){
   _id,
   title,
@@ -16,7 +16,8 @@ const query = groq`
   publishedAt,
   summary,
   author->{ name, image },
-  readTime
+  readTime,
+  body
 }
 `;
 
