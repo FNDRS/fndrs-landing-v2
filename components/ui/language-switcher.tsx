@@ -2,6 +2,7 @@
 
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { Language } from "@/types";
+import { useAnalytics } from "@/hooks/use-posthog";
 
 const languages: { code: Language; label: string }[] = [
   { code: "en", label: "English" },
@@ -13,10 +14,15 @@ export const LanguageSwitcher: React.FC = () => {
   const router = useRouter();
   const pathname = usePathname();
   const params = useParams();
+  const { trackLanguageChange } = useAnalytics();
   const currentLang = params?.lang as Language;
 
   const handleLanguageChange = (newLang: Language) => {
     if (!pathname) return;
+
+    // Track language change
+    trackLanguageChange(currentLang, newLang);
+
     const parts = pathname.split("/");
     parts[1] = newLang; // reemplaza el lang en la URL
     const newPath = parts.join("/") || "/";

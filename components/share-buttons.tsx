@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Share2, Linkedin, Twitter, Link, Mail, Check } from "lucide-react";
+import { useAnalytics } from "@/hooks/use-posthog";
 import { MotionDiv } from "./ui/motion-client";
 
 interface ShareButtonsProps {
@@ -21,6 +22,7 @@ export default function ShareButtons({
   const [copied, setCopied] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasAppeared, setHasAppeared] = useState(false);
+  const { trackBlogPostShare } = useAnalytics();
 
   useEffect(() => {
     // For inline position, always show the buttons
@@ -102,6 +104,9 @@ export default function ShareButtons({
   };
 
   const handleShare = (platform: string) => {
+    // Track the share event
+    trackBlogPostShare(title, platform);
+
     if (platform === "copy") {
       copyToClipboard();
       return;

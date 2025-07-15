@@ -8,10 +8,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { heroText } from "@/constants/hero-section-translations";
 import { useLanguage } from "@/hooks/use-language";
+import { useAnalytics } from "@/hooks/use-posthog";
 
 const Home = () => {
   const router = useRouter();
   const { language } = useLanguage();
+  const { trackButtonClick } = useAnalytics();
   const t = heroText[language as keyof typeof heroText];
 
   return (
@@ -49,7 +51,10 @@ const Home = () => {
                 size="lg"
                 className="font-medium bg-black text-white"
                 variant="outline"
-                onClick={() => router.push("#process")}
+                onClick={() => {
+                  trackButtonClick("get_started", "hero_section");
+                  router.push("#process");
+                }}
               >
                 {t.getStarted}
                 <ArrowUpRight className="ml-2" size={16} />
@@ -58,7 +63,10 @@ const Home = () => {
                 size="lg"
                 variant="outline"
                 className="font-medium hover:bg-gray-100 hover:text-gray-800"
-                onClick={() => router.push("#services")}
+                onClick={() => {
+                  trackButtonClick("view_services", "hero_section");
+                  router.push("#services");
+                }}
               >
                 {t.viewServices}
               </Button>

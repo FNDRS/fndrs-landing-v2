@@ -7,6 +7,7 @@ import { Github, Instagram, Linkedin, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { navbarText } from "@/constants/navbar-translations";
 import { useLanguage } from "@/hooks/use-language";
+import { useAnalytics } from "@/hooks/use-posthog";
 import Image from "next/image";
 import { AnimatePresence, MotionDiv, MotionHeader } from "./ui/motion-client";
 
@@ -14,6 +15,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const { language } = useLanguage();
+  const { trackButtonClick } = useAnalytics();
   const t = navbarText[language as keyof typeof navbarText];
 
   return (
@@ -59,7 +61,10 @@ const Navbar = () => {
         <div className="hidden md:block">
           <Button
             variant="outline"
-            onClick={() => router.push(`/${language}/contact`)}
+            onClick={() => {
+              trackButtonClick("contact_cta", "navbar");
+              router.push(`/${language}/contact`);
+            }}
           >
             {t.cta}
           </Button>

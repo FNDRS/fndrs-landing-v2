@@ -7,12 +7,15 @@ import * as z from "zod";
 import { ArrowRight } from "lucide-react";
 import { contactFormText } from "@/constants/contact-translations";
 import { useLanguage } from "@/hooks/use-language";
+import { useAnalytics, usePostHog } from "@/hooks/use-posthog";
 import axios from "axios";
 import { MotionDiv, MotionForm } from "./ui/motion-client";
 import { getContactFormSchema } from "@/schemas/contact-form.schema";
 
 const ContactForm = () => {
   const { language } = useLanguage();
+  const { trackContactFormSubmission, trackNewUserSignup } = useAnalytics();
+  const { identifyUser, setUserProperties } = usePostHog();
   const t = contactFormText[language as keyof typeof contactFormText];
   const formSchema = getContactFormSchema(t);
 
@@ -44,11 +47,48 @@ const ContactForm = () => {
     setIsSubmitting(true);
     try {
       await axios.post("/api/contact", data);
+
+      // Track successful form submission
+      trackContactFormSubmission({
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        services: data.services,
+        budget: data.budget,
+      });
+
+      // Track as new user signup
+      trackNewUserSignup("contact_form");
+
+      // Identify user for future tracking
+      identifyUser(data.email, {
+        email: data.email,
+        name: data.name,
+        company: data.company,
+        language: language,
+      });
+
+      // Set additional user properties
+      setUserProperties({
+        services_interested: data.services,
+        budget_range: data.budget,
+        contact_method: "contact_form",
+        language: language,
+      });
+
       setIsSuccess(true);
       reset();
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
+      // Track failed submission
+      trackContactFormSubmission({
+        name: data.name,
+        email: data.email,
+        company: data.company,
+        services: data.services,
+        budget: data.budget,
+      });
     } finally {
       setIsSubmitting(false);
     }

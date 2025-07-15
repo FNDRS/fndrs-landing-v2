@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "@/styles/critical.css";
 import ClientStyleLoader from "@/components/client-style-loader";
 import SchemaMarkup from "@/components/schema-markup";
+import { PostHogProvider } from "@/components/posthog-provider";
 import { Metadata } from "next";
 
 const poppins = Poppins({
@@ -46,7 +47,9 @@ export default function RootLayout({
       </head>
       <body className={poppins.className}>
         <ClientStyleLoader />
-        <Provider>{children}</Provider>
+        <PostHogProvider>
+          <Provider>{children}</Provider>
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>
