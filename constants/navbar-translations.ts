@@ -7,7 +7,7 @@ export const navbarText = {
       { href: "#services", label: "Services" },
       { href: "/blog", label: "Blog" },
     ],
-    cta: "Discuss a project",
+    cta: "Contact Us",
     mobileCTA: "Let's Talk",
   },
   es: {
@@ -18,7 +18,7 @@ export const navbarText = {
       { href: "#services", label: "Servicios" },
       { href: "/blog", label: "Blog" },
     ],
-    cta: "Habla con nosotros",
+    cta: "Contáctanos",
     mobileCTA: "Hablemos",
   },
   ja: {
@@ -29,7 +29,7 @@ export const navbarText = {
       { href: "#services", label: "サービス" },
       { href: "/blog", label: "ブログ" },
     ],
-    cta: "プロジェクトについて相談する",
+    cta: "お問い合わせ",
     mobileCTA: "話しましょう",
   },
 };

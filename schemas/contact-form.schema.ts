@@ -13,11 +13,9 @@ export const getContactFormSchema = (t: {
   z.object({
     name: z.string().min(1, { message: t.validation.name }),
     email: z.string().email({ message: t.validation.email }),
-    phoneNumber: z.string().min(7, { message: t.validation.phoneNumber }),
+    phoneNumber: z.string().optional(),
     company: z.string().optional(),
-    services: z.array(z.string()).min(1, { message: t.validation.services }),
-    budget: z.string().nonempty(t.validation.budget),
-    message: z.string().min(10, { message: t.validation.message }),
+    services: z.array(z.string()).optional(),
   });
 
 export type ContactFormSchema = ReturnType<typeof getContactFormSchema>;

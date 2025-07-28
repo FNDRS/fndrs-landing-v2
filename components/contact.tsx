@@ -38,15 +38,19 @@ const ContactForm = () => {
       phoneNumber: "",
       company: "",
       services: [],
-      budget: "",
-      message: "",
     },
   });
 
   const onSubmit = async (data: FormValues): Promise<void> => {
+    console.log("Form data:", data);
+    console.log("Form errors:", errors);
+    console.log("Is submitting:", isSubmitting);
+
     setIsSubmitting(true);
     try {
+      console.log("Sending data to API:", data);
       await axios.post("/api/contact", data);
+      console.log("API call successful");
 
       // Track successful form submission
       trackContactFormSubmission({
@@ -54,7 +58,6 @@ const ContactForm = () => {
         email: data.email,
         company: data.company,
         services: data.services,
-        budget: data.budget,
       });
 
       // Track as new user signup
@@ -71,7 +74,6 @@ const ContactForm = () => {
       // Set additional user properties
       setUserProperties({
         services_interested: data.services,
-        budget_range: data.budget,
         contact_method: "contact_form",
         language: language,
       });
@@ -81,18 +83,34 @@ const ContactForm = () => {
       setTimeout(() => setIsSuccess(false), 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
+      console.error("Error details:", {
+        message: error instanceof Error ? error.message : "Unknown error",
+        response: error instanceof Error ? (error as any).response?.data : null,
+        status: error instanceof Error ? (error as any).response?.status : null,
+      });
       // Track failed submission
       trackContactFormSubmission({
         name: data.name,
         email: data.email,
         company: data.company,
         services: data.services,
-        budget: data.budget,
       });
     } finally {
       setIsSubmitting(false);
     }
   };
+
+  const handleFormSubmit = handleSubmit(onSubmit, (errors) => {
+    console.log("Form validation failed:", errors);
+    console.log("Current form state:", {
+      errors,
+      isSubmitting,
+      isSuccess,
+    });
+  });
+
+  console.log("Form schema:", formSchema);
+  console.log("Current form errors:", errors);
 
   return (
     <section className="pb-20 pt-20 overflow-hidden">
@@ -108,7 +126,7 @@ const ContactForm = () => {
         <p className="text-gray-600 text-center mb-10">{t.subtitle}</p>
 
         <MotionForm
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleFormSubmit}
           className="space-y-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -192,7 +210,7 @@ const ContactForm = () => {
             />
           </div>
 
-          {/* Services */}
+          {/* Services - Commented out
           <div>
             <label className="block text-sm font-medium mb-3">
               {t.servicesLabel}
@@ -236,66 +254,7 @@ const ContactForm = () => {
               </p>
             )}
           </div>
-
-          {/* Budget */}
-          <div>
-            <label className="block text-sm font-medium mb-3">
-              {t.budgetLabel}
-            </label>
-            <Controller
-              control={control}
-              name="budget"
-              render={({ field }) => (
-                <div className="flex flex-wrap gap-2">
-                  {t.budgetOptions.map((option) => (
-                    <label
-                      key={option.value}
-                      className={`inline-flex items-center px-4 py-2 rounded-full border cursor-pointer transition-colors ${
-                        field.value === option.value
-                          ? "bg-black text-white border-black"
-                          : "bg-gray-100 text-gray-800 border-gray-200 hover:bg-gray-200"
-                      }`}
-                    >
-                      <input
-                        type="radio"
-                        value={option.value}
-                        checked={field.value === option.value}
-                        onChange={(e) => field.onChange(e.target.value)}
-                        className="sr-only"
-                      />
-                      {option.label}
-                    </label>
-                  ))}
-                </div>
-              )}
-            />
-            {errors.budget && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.budget.message}
-              </p>
-            )}
-          </div>
-
-          {/* Message */}
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium mb-2">
-              {t.messageLabel}
-            </label>
-            <textarea
-              id="message"
-              placeholder={t.messagePlaceholder}
-              rows={4}
-              className={`w-full px-4 py-3 border-b bg-white ${
-                errors.message ? "border-red-500" : "border-gray-300"
-              } focus:border-black outline-none transition-colors`}
-              {...register("message")}
-            ></textarea>
-            {errors.message && (
-              <p className="mt-1 text-sm text-red-500">
-                {errors.message.message}
-              </p>
-            )}
-          </div>
+          */}
 
           {/* Submit */}
           <div className="pt-4">

@@ -7,7 +7,7 @@ export const contactFormText = {
     namePlaceholder: "Hello...",
     emailLabel: "Email*",
     emailPlaceholder: "Where can we reply?",
-    phoneLabel: "Phone Number*",
+    phoneLabel: "Phone Number",
     phonePlaceholder: "e.g. +1 234 567 8900",
     companyLabel: "Company Name",
     companyPlaceholder: "Your company or website?",

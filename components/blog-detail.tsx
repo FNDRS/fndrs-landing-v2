@@ -4,7 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Image from "next/image";
 import { useLanguage } from "@/hooks/use-language";
 import { blogText } from "@/constants/blog-translations";
-import { MotionDiv } from "./ui/motion-client";
+// import { MotionDiv } from "./ui/motion-client"; // Animation disabled
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { calculateReadTime } from "@/lib/utils";
@@ -152,23 +152,7 @@ export default function PostDetailClient({
       day: "numeric",
     });
 
-  const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
+  // Animations disabled: use regular divs instead of MotionDiv
   return (
     <>
       {/* Structured Data for SEO */}
@@ -182,19 +166,10 @@ export default function PostDetailClient({
       {/* Reading Progress Bar */}
       <ReadingProgress target=".prose" />
 
-      <MotionDiv
-        className="min-h-screen bg-white mt-32"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={containerVariants}
-      >
-        <MotionDiv
-          className="container mx-auto px-4 pb-20 max-w-2xl"
-          variants={itemVariants}
-        >
+      <div className="min-h-screen bg-white mt-32">
+        <div className="container mx-auto px-4 pb-20 max-w-2xl">
           <header className="text-center mb-12">
-            <MotionDiv variants={itemVariants} className="my-4">
+            <div className="my-4">
               <Link
                 href={`/${language}/blog`}
                 className="flex items-center justify-start text-gray-900 hover:text-gray-700 transition-colors"
@@ -202,31 +177,28 @@ export default function PostDetailClient({
               >
                 <ArrowLeft className="hover:-translate-x-1 duration-300" />
               </Link>
-            </MotionDiv>
-            <MotionDiv variants={itemVariants}>
+            </div>
+            <div>
               <span className="flex text-sm w-full text-left font-medium text-gray-500 uppercase tracking-wide">
                 {t.articleLabel}
               </span>
-            </MotionDiv>
+            </div>
 
-            <MotionDiv variants={itemVariants}>
+            <div>
               <h1 className="text-4xl font-semibold text-left text-gray-900 leading-[1.1] max-w-4xl mx-auto my-4">
                 {post.title}
               </h1>
-            </MotionDiv>
+            </div>
 
             {post.excerpt && (
-              <MotionDiv variants={itemVariants}>
+              <div>
                 <p className="text-lg font-light text-gray-900/60 text-left mb-8 max-w-2xl leading-loose">
                   {post.excerpt}
                 </p>
-              </MotionDiv>
+              </div>
             )}
 
-            <MotionDiv
-              className="flex flex-col sm:flex-row justify-center items-center gap-6 my-12 text-sm text-gray-900"
-              variants={containerVariants}
-            >
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-6 my-12 text-sm text-gray-900">
               {[
                 { label: t.dateLabel, value: formatDate(post.publishedAt) },
                 { label: t.authorLabel, value: post?.author },
@@ -235,18 +207,17 @@ export default function PostDetailClient({
                   value: `${calculatedReadTime} ${t.readUnit}`,
                 },
               ].map((item, idx) => (
-                <MotionDiv
+                <div
                   key={idx}
                   className="flex flex-col items-center gap-2 w-full sm:w-auto px-4 sm:px-10 border-gray-200 sm:border-r sm:last:border-r-0"
-                  variants={itemVariants}
                 >
                   <span className="uppercase tracking-wide text-xs">
                     {item.label}
                   </span>
                   <span className="font-light">{item.value}</span>
-                </MotionDiv>
+                </div>
               ))}
-            </MotionDiv>
+            </div>
           </header>
 
           <div className="relative">
@@ -258,18 +229,15 @@ export default function PostDetailClient({
               position="inline"
             />
 
-            <MotionDiv
-              className="prose prose-lg prose-gray max-w-none"
-              variants={containerVariants}
-            >
+            <div className="prose prose-lg prose-gray max-w-none">
               <PortableText
                 value={post.body}
                 components={portableTextComponents}
               />
-            </MotionDiv>
+            </div>
           </div>
-        </MotionDiv>
-      </MotionDiv>
+        </div>
+      </div>
     </>
   );
 }
