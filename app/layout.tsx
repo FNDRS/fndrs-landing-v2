@@ -7,6 +7,7 @@ import ClientStyleLoader from "@/components/client-style-loader";
 import SchemaMarkup from "@/components/schema-markup";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { Metadata } from "next";
+import { Suspense } from "react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -47,9 +48,11 @@ export default function RootLayout({
       </head>
       <body className={poppins.className}>
         <ClientStyleLoader />
-        <PostHogProvider>
-          <Provider>{children}</Provider>
-        </PostHogProvider>
+        <Suspense fallback={null}>
+          <PostHogProvider>
+            <Provider>{children}</Provider>
+          </PostHogProvider>
+        </Suspense>
         <Analytics />
       </body>
     </html>
